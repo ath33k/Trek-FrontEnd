@@ -1,13 +1,32 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 export default function ExpandableText({
   children,
   className = "",
-  maxLength = 200,
+  xs = 200,
+  sm = 300,
+  md = 400,
+  lg = 500,
+  xl = 600,
 }) {
   const [expanded, setExpanded] = useState(false);
-  const shouldExpand = children.length > maxLength;
-  const text = expanded ? children : children.slice(0, maxLength);
+  const [tarLength, setTerLength] = useState(xs);
+
+  const handleBreakpoint = (width) => {
+    if (width >= 1280) return xl;
+    else if (width >= 1024) return lg;
+    else if (width >= 768) return md;
+    else if (width >= 640) return sm;
+    else return xs;
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      setTerLength(handleBreakpoint(window.innerWidth));
+    });
+  }, []);
+
+  const text = expanded ? children : children.slice(0, tarLength);
   return (
     <motion.p
       initial={{ opacity: 0 }}
@@ -15,7 +34,7 @@ export default function ExpandableText({
       className={className}
     >
       {text}
-      {shouldExpand && (
+      {children.length > tarLength && (
         <button
           onClick={() => setExpanded(!expanded)}
           className="text-blue-500"
