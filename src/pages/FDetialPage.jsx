@@ -1,9 +1,19 @@
 import Container from "../components/Container";
 import ExpandableText from "../components/ExpandableText";
+import Carousel from "../components/HeaderImageCarousel";
+
+
+const images = [
+  { src:  '../assets/sigiriya.png'},
+  { src: '../assets/sigiriya.png' },
+  { src: '../assets/sigiriya.png'},
+  
+];
 
 export default function FDetialPage() {
   return (
     <Container className={"px-0"}>
+      <div><Carousel images={images} /></div>
       <div className="w-full h-96 rounded-t-[40px] rounded-b-none px-5 ">
         <h1 className="text-3xl  font-bold mb-3 text-gray-900 font-inter">
           Sigiriya
@@ -17,5 +27,6 @@ export default function FDetialPage() {
         </ExpandableText>
       </div>
     </Container>
+    
   );
 }
