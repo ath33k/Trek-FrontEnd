@@ -6,7 +6,7 @@ const ChipGroup = ({ price, mapsUrl }) => {
     <div className="flex flex-col md:flex-row gap-2 mt-6">
       <Chip
         label={`LKR ${price} per person`}
-        className="bg-blue-200 text-blue-800 w-2/6 md:w-mid" 
+        className="bg-blue-200 text-blue-800 w-2/5 md:w-auto text-center" 
       />
       <Chip
         label="Google Map"

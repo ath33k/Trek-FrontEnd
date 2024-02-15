@@ -1,13 +1,24 @@
 import React, { useState } from 'react';
 import profilePic from '../assets/sigiriya.png'; 
+import Rating from 'react-rating-stars-component';
 
 const CommentSection = () => {
   const [comments, setComments] = useState([
     { id: 1, text: 'Amazing place. Recommend to everyone.', user: 'User A' },
     { id: 2, text: 'Worth visiting this place. I love this place.', user: 'User B' },
+    { id: 3, text: 'Worth visiting this place. I love this place.', user: 'User C' },
+    { id: 4, text: 'Worth visiting this place. I love this place.', user: 'User D' },
+    { id: 5, text: 'Worth visiting this place. I love this place.', user: 'User E' },
+    { id: 6, text: 'Worth visiting this place. I love this place.', user: 'User F' },
    
   ]);
   const [newComment, setNewComment] = useState('');
+  const [rating, setRating] = useState(0);
+
+  const ratingChanged = (newRating) => {
+    console.log(newRating);
+    setRating(newRating);
+  };
 
   const handleSend = () => {
     if (newComment.trim()) {
@@ -17,9 +28,13 @@ const CommentSection = () => {
     }
   };
 
+  
+  const commentsContainerClass = `space-y-4 ${comments.length > 5 ? 'overflow-y-scroll' : 'overflow-hidden'} max-h-60 max-w-md mx-auto`;
+
   return (
+    
     <div>
-      <div className="space-y-4">
+      <div className={commentsContainerClass}>
         {comments.map((comment) => (
           <div key={comment.id} className="flex items-center gap-2 max-w-md mx-auto">
             <img src={profilePic} alt="Profile" className="w-10 h-10 rounded-full" />
@@ -38,10 +53,22 @@ const CommentSection = () => {
           className="border p-2 rounded-lg flex-1"
           placeholder="Add a comment..."
         />
-        <button onClick={handleSend} className="bg-blue-500 text-white p-2 rounded-lg">
+        <button onClick={handleSend} className="bg-blue-500 text-white p-2 rounded-lg mt-4">
           SEND
         </button>
       </div>
+      <div className="my-4 flex flex-col items-center justify-center">
+        <p className="text-lg mb-2">How do you rate this item?</p>
+        <Rating
+          count={5}
+          onChange={ratingChanged}
+          size={24}
+          activeColor="#ffd700"
+          value={rating}
+          classNames="flex justify-center"
+        />
+      </div>
+
     </div>
   );
 };

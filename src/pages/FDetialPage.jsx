@@ -3,6 +3,8 @@ import ExpandableText from "../components/ExpandableText";
 import HeaderImageCarousel from "../components/HeaderImageCarousel";
 import sigiriya from "../assets/sigiriya.png";
 import ChipGroup from "../components/ChipGroup";
+import CommentSection from "../components/CommentSection";
+
 
 
 
@@ -44,8 +46,8 @@ export default function FDetialPage() {
         <h1 className="text-2xl   mb-3 text-gray-900 font-inter mt-5">
           People who visit before you
         </h1>
-
       </div>
+      <CommentSection />
     </Container>
     
   );
