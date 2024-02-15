@@ -1,16 +1,27 @@
 import Container from "../components/Container";
 import ExpandableText from "../components/ExpandableText";
 import HeaderImageCarousel from "../components/HeaderImageCarousel";
-import img from "../assets/sigiriya.png";
+import sigiriya from "../assets/sigiriya.png";
+import ChipGroup from "../components/ChipGroup";
+
+
 
 
 
 
 const images = [
-  { src: img}
-  
+  { src:  '../assets/sigiriya.png'},
+  { src:  sigiriya},
+  { src: '../assets/sigiriya.png' },
+  { src: '../assets/sigiriya.png'},
+
 ];
 
+
+
+
+const price = 2500; // Example price
+const mapsUrl = 'https://maps.google.com/?q=Sigiriya'; // Example Google Maps URL
 
 
 export default function FDetialPage() {
@@ -29,6 +40,11 @@ export default function FDetialPage() {
           dominated by a massive column of granite approximately 180 m (590 ft)
           high.
         </ExpandableText>
+        <ChipGroup price={price} mapsUrl={mapsUrl}/>
+        <h1 className="text-2xl   mb-3 text-gray-900 font-inter mt-5">
+          People who visit before you
+        </h1>
+
       </div>
     </Container>
     

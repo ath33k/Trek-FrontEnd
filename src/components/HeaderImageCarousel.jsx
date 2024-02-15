@@ -1,7 +1,6 @@
-// Carousel.js
-import React, { useState, useEffect } from 'react';
+import  React, { useState, useEffect } from 'react';
 
-const Carousel = ({ images }) => {
+const HeaderImageCarousel = ({ images }) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
