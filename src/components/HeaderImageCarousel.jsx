@@ -19,10 +19,10 @@ const Carousel = ({ images }) => {
           className="whitespace-nowrap transition-transform duration-700"
           style={{ transform: `translateX(-${activeIndex * 100}%)` }}
         >
-          {images.map((src, index) => (
+          {images.map((image, index) => (
             <img
               key={index}
-              src={src}
+              src={image.src}
               alt={`Slide ${index}`}
               className="inline-block w-full h-auto"
               style={{ height: '400px' }}
@@ -46,4 +46,4 @@ const Carousel = ({ images }) => {
   );
 };
 
-export default Carousel;
+export default HeaderImageCarousel;
