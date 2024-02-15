@@ -37,7 +37,7 @@ export default function ExpandableText({
       {children.length > tarLength && (
         <button
           onClick={() => setExpanded(!expanded)}
-          className="text-blue-500"
+          className="text-blue-500 underline"
         >
           &nbsp;
           {expanded ? "See less" : "See more..."}
