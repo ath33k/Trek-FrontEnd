@@ -1,17 +1,20 @@
 import Container from "../components/Container";
 import ExpandableText from "../components/ExpandableText";
 import HeaderImageCarousel from "../components/HeaderImageCarousel";
-import sigiriya from "../assets/sigiriya.png"
+import img from "../assets/sigiriya.png";
+
+
 
 
 const images = [
-  { src:  sigiriya},
-  { src: '../assets/sigiriya.png' },
-  { src: '../assets/sigiriya.png'},
+  { src: img}
   
 ];
 
+
+
 export default function FDetialPage() {
+
   return (
     <Container className={"px-0"}>
       <div className="mb-10"><HeaderImageCarousel images={images} /></div>
