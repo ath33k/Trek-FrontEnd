@@ -1,4 +1,4 @@
-import  React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 const HeaderImageCarousel = ({ images }) => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -24,7 +24,7 @@ const HeaderImageCarousel = ({ images }) => {
               src={image.src}
               alt={`Slide ${index}`}
               className="inline-block w-full h-auto"
-              style={{ height: '400px' }}
+              style={{ height: "400px" }}
             />
           ))}
         </div>
@@ -34,7 +34,7 @@ const HeaderImageCarousel = ({ images }) => {
           <button
             key={index}
             className={`h-2 w-2 mx-1 rounded-full ${
-              index === activeIndex ? 'bg-white' : 'bg-gray-400'
+              index === activeIndex ? "bg-white" : "bg-gray-400"
             }`}
             onClick={() => setActiveIndex(index)}
             aria-label={`Go to slide ${index + 1}`}
