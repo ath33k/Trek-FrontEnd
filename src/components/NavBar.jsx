@@ -3,6 +3,8 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { IoCloseOutline } from "react-icons/io5";
 import { NavLink } from "react-router-dom";
 import { Logo } from "./Logo";
+import Chip from "../components/Chip.jsx";
+import { FaSearch } from "react-icons/fa";
 
 export const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -53,16 +55,22 @@ export const NavBar = () => {
 
           <Logo />
 
-          <ul className="hidden md:flex lg:flex lg:text-2xl">
-            {navBarLinks.map((link) => (
+          <ul className="hidden md:flex lg:flex ">
+            {navBarLinks.map((link, index) => (
               <NavLink
                 to={link.path}
                 className="m-2 hover:text-blue-500 hover:drop-shadow-md duration-300"
+                key={index}
               >
                 {link.name}
               </NavLink>
             ))}
           </ul>
+          <Chip
+            label={"Search"}
+            endIcon={<FaSearch />}
+            className=" hidden md:flex lg:flex bg-transparent border-solid border-black b border border-1  hover:bg-black hover:text-white hover:border-white "
+          />
         </div>
 
         {isOpen && (
@@ -92,10 +100,11 @@ function HamburgerLinks({ navBarLinks, onHandleMenu }) {
           className="mt-2 mx-5 text-3xl sm:text-5xl cursor-pointer hover:text-blue-500"
         />
         <ul className="flex flex-col items-center text-2xl sm:text-4xl md:text-4xl">
-          {navBarLinks.map((link) => (
+          {navBarLinks.map((link, index) => (
             <NavLink
               to={link.path}
               className="m-3 sm:m-5 cursor-pointer font-bold inline-block hover:text-blue-400 duration-300"
+              key={index}
             >
               {link.name}
             </NavLink>
