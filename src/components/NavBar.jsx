@@ -1,10 +1,31 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoCloseOutline } from "react-icons/io5";
 import { NavLink } from "react-router-dom";
 import { Logo } from "./Logo";
 
 export const NavBar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  // when resizing for larger screen with menu state open and after come back to the smaller screen the menu still displays open.
+  // used this to fix that issue
+  useEffect(() => {
+    const handleResize = () => {
+      let width = window.innerWidth;
+      if (width >= 768) {
+        setIsOpen(false);
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  function handleHamburgerMenu() {
+    setIsOpen((curr) => !curr);
+  }
+
   // dummies to check if it is working
   const navBarLinks = [
     {
@@ -21,12 +42,6 @@ export const NavBar = () => {
     },
   ];
 
-  const [isOpen, setIsOpen] = useState(false);
-
-  function handleHamburgerMenu() {
-    setIsOpen((curr) => !curr);
-  }
-
   return (
     <nav className="flex justify-between items-center bg-black/10 ">
       <div className="flex items-center mx-5 p-3 md:w-[100%] lg:w-[100%]">
@@ -38,7 +53,7 @@ export const NavBar = () => {
 
           <Logo />
 
-          <ul className="hidden md:flex lg:flex md:text-1xl lg:text-2xl">
+          <ul className="hidden md:flex lg:flex lg:text-2xl">
             {navBarLinks.map((link) => (
               <NavLink
                 to={link.path}
@@ -64,7 +79,7 @@ export const NavBar = () => {
 // Opened state of the hamburger menu... This component only used inside this navbar so there's no need of creating a seperate file
 function HamburgerLinks({ navBarLinks, onHandleMenu }) {
   return (
-    <div className="fixed h-full w-screen md:hidden lg:hidden bg-black/50 backdrop-blur-sm top-0 right-0">
+    <div className="fixed h-full w-screen md:hidden lg:hidden bg-black/50 backdrop-blur-sm top-0 right-0 z-[500]">
       <div
         className={
           "text-white bg-black/50 fixed p-2  z-50  h-[400px] ease-in-out left-0 top-0 duration-1000 w-full"
