@@ -11,6 +11,8 @@ import NineArch from "../assets/yves-alarie-3R50kTNBKiE-unsplash.jpg";
 
 import Sunset from "../assets/sunsetAtElla.jpeg";
 
+import Container from "../components/Container";
+
 export default function HomePage() {
   const imageList = [
     {
@@ -31,6 +33,7 @@ export default function HomePage() {
     <>
       <NavBar />
       <HeaderImageCarousel images={imageList}></HeaderImageCarousel>
+      <Container></Container>
     </>
   );
 }
