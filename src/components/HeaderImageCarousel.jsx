@@ -23,7 +23,7 @@ const HeaderImageCarousel = ({ images }) => {
               key={index}
               src={image.src}
               alt={`Slide ${index}`}
-              className="inline-block w-full h-auto"
+              className="inline-block w-full h-auto "
               style={{ height: "400px" }}
             />
           ))}
