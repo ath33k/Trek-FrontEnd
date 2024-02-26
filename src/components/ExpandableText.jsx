@@ -40,7 +40,7 @@ export default function ExpandableText({
           className="text-blue-600"
         >
           &nbsp;
-          {expanded ? "See less" : "See more..."}
+          {expanded ? "See less" : "...See more"}
         </button>
       )}
     </motion.p>
