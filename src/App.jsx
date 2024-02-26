@@ -8,7 +8,7 @@ import FDetialPage from "./pages/FDetialPage";
 export default function App() {
   return (
     <BrowserRouter>
-      <FDetialPage />
+      <HomePage />
     </BrowserRouter>
   );
 }
