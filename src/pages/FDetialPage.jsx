@@ -7,7 +7,7 @@ import Chip from "../components/Chip";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import RatingComponent from "../components/RatingSection";
 import CommentSection2 from "../components/CommentSection2";
-import MySlider from "../components/Slider";
+import MySlider from "../components/MySlider";
 
 const images = [
   { src: "../assets/sigiriya.png" },
@@ -17,8 +17,8 @@ const images = [
 ];
 
 const slides = [
-  { id: 1, image:sigiriya, altText: 'Image 1' },
-  { id: 2, image: sigiriya, altText: 'Image 2' },
+  { id: 1, image: sigiriya, altText: "Image 1" },
+  { id: 2, image: sigiriya, altText: "Image 2" },
   // Add more slide objects here
 ];
 
@@ -41,11 +41,7 @@ const commentsData = [
     helpfulCount: 102,
     image: "path/to/sigiriya_image.jpg",
   },
-  
 ];
-
-
-
 
 const ratingPresentages = { 5: 80, 4: 15, 3: 3, 2: 1, 1: 1 };
 
@@ -80,16 +76,18 @@ export default function FDetialPage() {
         />
       </div>
       <div className="mb-10">
-        <MySlider slides={slides}/>
+        <MySlider slides={slides} />
       </div>
       {/* <MySlider slides={slides}/> */}
       <div className="mb-10 ml-3 mr-3">
-
-
-        <div><RatingComponent totalRating={4.4}
-          reviewsCount={"2.2"} ratings={ratingPresentages}/>
+        <div>
+          <RatingComponent
+            totalRating={4.4}
+            reviewsCount={"2.2"}
+            ratings={ratingPresentages}
+          />
         </div>
-        <CommentSection2 commentsData={commentsData}/>
+        <CommentSection2 commentsData={commentsData} />
       </div>
     </Container>
   );
