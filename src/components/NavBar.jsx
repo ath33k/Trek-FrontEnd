@@ -8,6 +8,7 @@ import { FaSearch } from "react-icons/fa";
 
 export const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(null);
 
   // when resizing for larger screen with menu state open and after come back to the smaller screen the menu still displays open.
   // used this to fix that issue
@@ -23,6 +24,24 @@ export const NavBar = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  useEffect(() => {
+    const handleScrollStart = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+
+    // const handleScrollEnd = () => {
+    //   setIsScrolled(false);
+    // };
+
+    window.addEventListener("scroll", handleScrollStart);
+    // window.addEventListener("scrollend", handleScrollEnd);
+    return () => {
+      window.removeEventListener("scroll", handleScrollStart);
+      // window.removeEventListener("scrollend", handleScrollEnd);
+    };
+  }, []);
+  console.log(isScrolled);
 
   function handleHamburgerMenu() {
     setIsOpen((curr) => !curr);
@@ -45,7 +64,13 @@ export const NavBar = () => {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 justify-between w-full items-center backdrop-filter  z-50 text-white">
+    <nav
+      className={`fixed top-0 left-0 justify-between w-full items-center ${
+        isScrolled
+          ? "backdrop-filter backdrop-blur-md bg-black bg-opacity-20"
+          : ""
+      }  z-50 text-white `}
+    >
       <div className="flex items-center p-3 md:w-[100%] lg:w-[100%]">
         <div className="flex items-center justify-between  w-auto md:w-[100%]">
           <GiHamburgerMenu
@@ -69,7 +94,7 @@ export const NavBar = () => {
           <Chip
             label={"Search"}
             endIcon={<FaSearch />}
-            className=" hidden md:flex lg:flex bg-transparent border-solid border-white b border border-1  hover:bg-white hover:text-black hover: hover:border-black md:mr-10 "
+            className=" hidden md:flex lg:flex bg-transparent border-solid border-white b border border-1  hover:bg-white hover:text-black  md:mr-10 "
           />
         </div>
 

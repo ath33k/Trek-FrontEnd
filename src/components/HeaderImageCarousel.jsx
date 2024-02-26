@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 
-const HeaderImageCarousel = ({ images, className }) => {
+const HeaderImageCarousel = ({ images, className, hideBottomTab = false }) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <div className={"relative w-full " + className}>
+    <div className={"relative w-full  " + className}>
       <div className="overflow-hidden">
         <div
           className="whitespace-nowrap transition-transform duration-700"
@@ -25,7 +25,13 @@ const HeaderImageCarousel = ({ images, className }) => {
           ))}
         </div>
       </div>
-      <div className="absolute bottom-0 left-0 right-0 bg-white flex justify-center pt-4 pb-8 rounded-t-[40px]">
+      <div
+        className={
+          hideBottomTab
+            ? "absolute bottom-0 left-0 right-0 flex justify-center pt-4 pb-4 z-20"
+            : "absolute bottom-0 left-0 right-0 flex justify-center pt-4 pb-8 bg-white rounded-t-[40px]"
+        }
+      >
         {images.map((_, index) => (
           <button
             key={index}

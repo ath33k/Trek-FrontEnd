@@ -67,9 +67,12 @@ export default function HomePage() {
       <NavBar />
       <div className="relative">
         <div className=" bg-gradient-to-b from-black absolute h-[100%] w-[100%] top-0 left-0 opacity-65 z-10 "></div>
-        <HeaderImageCarousel images={imageList}></HeaderImageCarousel>
+        <HeaderImageCarousel
+          images={imageList}
+          hideBottomTab={true}
+        ></HeaderImageCarousel>
       </div>
-      <Container className={" p-10 md:p-16 lg:p-20 my-10  "}>
+      <Container className={" p-10 my-10 md:p-16 lg:p-20 "}>
         <h2 className=" text-2xl md:text-3xl text-center font-bold">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut
           praesentium mollitia assumenda quos natus voluptate veniam molestias
@@ -77,7 +80,7 @@ export default function HomePage() {
         </h2>
       </Container>
       <Container className={"mt-10 "}>
-        <h2 className="my-2">Recommendation</h2>
+        <h2 className="my-2 mx-1 xl:mx-2 2xl:mx-4">Recommendation</h2>
         <MySlider slides={imageForSlider} />
       </Container>
     </>
