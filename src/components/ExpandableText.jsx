@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+
 export default function ExpandableText({
   children,
+  // eslint-disable-next-line react/prop-types
   className = "",
   xs = 200,
   sm = 300,
