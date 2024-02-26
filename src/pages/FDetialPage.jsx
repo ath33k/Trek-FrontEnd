@@ -5,8 +5,16 @@ import sigiriya from "../assets/sigiriya.png";
 import CommentSection from "../components/CommentSection";
 import Chip from "../components/Chip";
 import { FaMapMarkerAlt } from "react-icons/fa";
+import RatingComponent from "../components/RatingSection";
+import CommentSection2 from "../components/CommentSection2";
+import MySlider from "../components/Slider";
 
-const images = [{ src: sigiriya }, { src: sigiriya }, { src: sigiriya }];
+const images = [
+  { src: "../assets/sigiriya.png" },
+  { src: sigiriya },
+  { src: "../assets/sigiriya.png" },
+  { src: "../assets/sigiriya.png" },
+];
 
 const price = 2500; // Example price
 const mapsUrl = "https://maps.google.com/?q=Sigiriya"; // Example Google Maps URL
@@ -14,7 +22,9 @@ const mapsUrl = "https://maps.google.com/?q=Sigiriya"; // Example Google Maps UR
 export default function FDetialPage() {
   return (
     <Container className={"px-0"}>
-      <HeaderImageCarousel images={images} />
+      {/* <div className="mb-10">
+        <HeaderImageCarousel images={images} />
+      </div> */}
       <div className="w-full h-96 rounded-t-[40px] rounded-b-none px-5 ">
         <h1 className="text-3xl font-bold mb-3 text-gray-900 font-inter">
           Sigiriya
@@ -36,7 +46,7 @@ export default function FDetialPage() {
           className=" text-gray-50 bg-blue-500"
         />
       </div>
-      <CommentSection />
+      {/* <CommentSection /> */}
     </Container>
   );
 }
