@@ -1,16 +1,10 @@
-import React, { useState, useEffect } from "react";
+/* eslint-disable react/prop-types */
+
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 const HeaderImageCarousel = ({ images, className }) => {
   const [activeIndex, setActiveIndex] = useState(0);
-
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setActiveIndex((current) => (current + 1) % images.length);
-  //   }, 3000); // Change the image every 3 seconds
-
-  //   return () => clearInterval(interval); // Cleanup the interval on component unmount
-  // }, [images.length]);
 
   return (
     <div className={"relative w-full " + className}>
