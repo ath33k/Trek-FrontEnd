@@ -36,6 +36,15 @@ const commentsData = [
     helpfulCount: 102,
     image: "path/to/sigiriya_image.jpg",
   },
+  {
+    id: 2,
+    user: "Bhanu Wilson",
+    date: "February 20, 2024",
+    text: "Truly a marvel of ancient engineering and art. The frescoes and the Lion's Gate are highlights not to be missed. However, be prepared for the monkeys - they are everywhere and can be quite cheeky!",
+    rating: 4,
+    helpfulCount: 102,
+    image: "path/to/sigiriya_image.jpg",
+  },
 ];
 
 const ratingPresentages = { 4: 25, 5: 80, 3: 3, 2: 1, 1: 1 };
