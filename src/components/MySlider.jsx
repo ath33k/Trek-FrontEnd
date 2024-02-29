@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -53,7 +54,12 @@ const MySlider = ({ slides }) => {
             <img
               src={slide.image}
               alt={slide.altText}
-              style={{ width: "100%", height: "300px", objectFit: "cover" }}
+              style={{
+                width: "100%",
+                paddingLeft: "5px",
+                height: "300px",
+                objectFit: "cover",
+              }}
             />
           </div>
         ))}

@@ -56,7 +56,7 @@ export default function FDetialPage() {
     <Container className={"px-0"}>
       <HeaderImageCarousel images={images} />
 
-      <div className="w-full h-96 rounded-t-[40px] rounded-b-none px-5 ">
+      <div className="w-full rounded-t-[40px] flex flex-col gap-2 rounded-b-none px-5 ">
         <h1 className="text-3xl font-bold mb-3 text-gray-900 font-inter">
           Sigiriya
         </h1>
@@ -76,20 +76,22 @@ export default function FDetialPage() {
           label={"Map"}
           className=" text-gray-50 bg-blue-500"
         />
-      </div>
-      <div className="mb-10">
-        <MySlider slides={slides} />
-      </div>
-      {/* <MySlider slides={slides}/> */}
-      <div className="mb-10 ml-3 mr-3">
-        <div>
-          <RatingComponent
-            totalRating={4.4}
-            reviewsCount={"2.2"}
-            ratings={ratingPresentages}
-          />
+        <div className="mb-10">
+          <h1 className="text-3xl font-bold mb-3 text-gray-900 font-inter">
+            Community Gallery
+          </h1>
+          <MySlider slides={slides} />
         </div>
-        <CommentSection2 commentsData={commentsData} />
+        <div className="mb-10 ml-3 mr-3">
+          <div>
+            <RatingComponent
+              totalRating={4.4}
+              reviewsCount={"2.2"}
+              ratings={ratingPresentages}
+            />
+          </div>
+          <CommentSection2 commentsData={commentsData} />
+        </div>
       </div>
     </Container>
   );

@@ -1,19 +1,20 @@
-import React, { useState, useEffect } from "react";
+/* eslint-disable react/prop-types */
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 const HeaderImageCarousel = ({ images, className }) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setActiveIndex((current) => (current + 1) % images.length);
-  //   }, 3000); // Change the image every 3 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((current) => (current + 1) % images.length);
+    }, 3000); // Change the image every 3 seconds
 
-  //   return () => clearInterval(interval); // Cleanup the interval on component unmount
-  // }, [images.length]);
+    return () => clearInterval(interval); // Cleanup the interval on component unmount
+  }, [images.length, activeIndex]);
 
   return (
-    <div className={"relative w-full " + className}>
+    <div className={"relative w-full  " + className}>
       <div className="overflow-hidden">
         <div
           className="whitespace-nowrap transition-transform duration-700"
@@ -24,7 +25,7 @@ const HeaderImageCarousel = ({ images, className }) => {
               key={index}
               src={image.src}
               alt={`Slide ${index}`}
-              className="inline-block w-full object-cover h-[320px] md:h-[500px]"
+              className="inline-block pointer-events-none w-full object-cover h-[320px] md:h-[500px]"
               animate={{
                 opacity: [0, 1],
                 backgroundColor: ["black", "transparent"],
