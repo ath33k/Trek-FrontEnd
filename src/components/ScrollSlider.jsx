@@ -5,8 +5,10 @@ import { FullScreen, useFullScreenHandle } from "react-full-screen";
 export default function ScrollSlider({
   images,
   title = "Carousel",
-  hclass = "h-72",
+  hClass = "h-72",
   emptymessage = "No images available",
+  objFitClass = "object-cover",
+  roundedClass = "rounded-lg",
 }) {
   const fshandle = useFullScreenHandle();
   return (
@@ -14,12 +16,12 @@ export default function ScrollSlider({
       <h2 className="text-2xl font-bold mb-3 text-gray-900 font-inter">
         {title}
       </h2>
-      <div className={` flex gap-2 items-center overflow-scroll  ${hclass}`}>
+      <div className={` flex gap-2 items-center overflow-scroll  ${hClass}`}>
         {images ? (
           images.map((image, index) => {
             return (
               <FullScreen
-                className={` inline-flex ${hclass} bg-black aspect-[4/3] rounded-lg justify-center`}
+                className={` inline-flex ${hClass} bg-black aspect-[4/3] ${roundedClass} justify-center`}
                 handle={fshandle}
                 key={index}
               >
@@ -33,7 +35,7 @@ export default function ScrollSlider({
                   }}
                   src={image.src}
                   alt="carousel"
-                  className=" h-full object-contain  "
+                  className={` h-full w-full ${roundedClass}  ${objFitClass}`}
                 />
               </FullScreen>
             );
