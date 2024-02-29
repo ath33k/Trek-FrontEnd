@@ -7,5 +7,5 @@ import FDetialPage from "./pages/FDetialPage";
 import MapViewPage from "./pages/MapViewPage";
 
 export default function App() {
-  return <MapViewPage />;
+  return <FDetialPage />;
 }
