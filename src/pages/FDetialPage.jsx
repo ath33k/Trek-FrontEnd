@@ -84,7 +84,7 @@ export default function FDetialPage() {
           className=" text-gray-50 bg-blue-500"
         />
         <div className="mb-10">
-          <ScrollSlider images={images} />
+          <ScrollSlider title="Community Gallery" images={images} />
         </div>
         <div className="mb-10 ml-3 mr-3">
           <div>
