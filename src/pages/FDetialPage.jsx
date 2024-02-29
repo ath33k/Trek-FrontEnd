@@ -2,21 +2,12 @@ import Container from "../components/Container";
 import ExpandableText from "../components/ExpandableText";
 import HeaderImageCarousel from "../components/HeaderImageCarousel";
 import sigiriya from "../assets/sigiriya.png";
-import CommentSection from "../components/CommentSection";
 import Chip from "../components/Chip";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import RatingComponent from "../components/RatingSection";
 import CommentSection2 from "../components/CommentSection2";
+import MySlider from "../components/MySlider";
 
-<<<<<<< HEAD
-const images = [
-  { src: sigiriya },
-  { src: sigiriya },
-  { src: sigiriya },
-  { src: sigiriya },
-];
-
-=======
 const images = [{ src: sigiriya }, { src: sigiriya }, { src: sigiriya }];
 
 const slides = [
@@ -57,7 +48,6 @@ const commentsData = [
 
 const ratingPresentages = { 4: 25, 5: 80, 3: 3, 2: 1, 1: 1 };
 
->>>>>>> comment-section
 const price = 2500; // Example price
 const mapsUrl = "https://maps.google.com/?q=Sigiriya"; // Example Google Maps URL
 
@@ -87,9 +77,6 @@ export default function FDetialPage() {
           className=" text-gray-50 bg-blue-500"
         />
       </div>
-<<<<<<< HEAD
-      {/* <CommentSection /> */}
-=======
       <div className="mb-10">
         <MySlider slides={slides} />
       </div>
@@ -104,7 +91,6 @@ export default function FDetialPage() {
         </div>
         <CommentSection2 commentsData={commentsData} />
       </div>
->>>>>>> comment-section
     </Container>
   );
 }

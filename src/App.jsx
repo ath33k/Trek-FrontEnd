@@ -7,16 +7,5 @@ import FDetialPage from "./pages/FDetialPage";
 import MapViewPage from "./pages/MapViewPage";
 
 export default function App() {
-<<<<<<< HEAD
   return <FDetialPage />;
-=======
-  return (
-    <>
-      <BrowserRouter>
-        {/* <NavBar />  */}
-        <FDetialPage />;
-      </BrowserRouter>
-    </>
-  );
->>>>>>> comment-section
 }

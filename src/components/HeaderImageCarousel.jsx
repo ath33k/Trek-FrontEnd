@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-/* eslint-disable react/prop-types */
-
-import { motion } from "framer-motion";
-import { useState } from "react";
-
-const HeaderImageCarousel = ({ images, className }) => {
-  const [activeIndex, setActiveIndex] = useState(0);
-
-=======
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
@@ -22,7 +12,6 @@ const HeaderImageCarousel = ({ images, className }) => {
   //   return () => clearInterval(interval); // Cleanup the interval on component unmount
   // }, [images.length]);
 
->>>>>>> comment-section
   return (
     <div className={"relative w-full " + className}>
       <div className="overflow-hidden">

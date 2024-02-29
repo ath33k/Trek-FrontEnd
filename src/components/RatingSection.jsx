@@ -1,32 +1,3 @@
-<<<<<<< HEAD
-import React, { useState } from "react";
-import Rating from "react-rating-stars-component";
-
-export default function RatingComponent({
-  totalRating,
-  reviewsCount,
-  ratings,
-}) {
-  const renderStars = (rating) => {
-    let stars = [];
-    for (let i = 0; i < 5; i++) {
-      stars.push(
-        <span
-          key={i}
-          className={`inline-block ${
-            i < Math.round(rating) ? "text-yellow-400" : "text-gray-300"
-          }`}
-        >
-          ★
-        </span>
-      );
-    }
-    return stars;
-  };
-
-  const [rating, setRating] = useState(0);
-
-=======
 /* eslint-disable react/prop-types */
 
 import { useState } from "react";
@@ -55,7 +26,6 @@ export default function RatingComponent({
 
   const [rating, setRating] = useState(0);
 
->>>>>>> comment-section
   const ratingChanged = (newRating) => {
     console.log(newRating);
     setRating(newRating);
@@ -65,19 +35,6 @@ export default function RatingComponent({
   const renderRatingBars = () => {
     // This data would come from your state or props
     //const ratings = { 5: 80, 4: 15, 3: 3, 2: 1, 1: 1 }; // Percentages
-<<<<<<< HEAD
-    return Object.keys(ratings).map((key) => (
-      <div key={key} className="flex items-center space-x-1">
-        <span className="text-gray-600">{key}</span>
-        <div className="w-full bg-gray-200 rounded h-2">
-          <div
-            className="bg-green-500 h-2 rounded"
-            style={{ width: `${ratings[key]}%` }}
-          ></div>
-        </div>
-      </div>
-    ));
-=======
     return Object.keys(ratings)
       .sort((a, b) => ratings[b] - ratings[a])
       .map((key) => (
@@ -91,7 +48,6 @@ export default function RatingComponent({
           </div>
         </div>
       ));
->>>>>>> comment-section
   };
 
   const starSpacingStyle = `
