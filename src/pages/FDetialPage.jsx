@@ -9,16 +9,11 @@ import RatingComponent from "../components/RatingSection";
 import CommentSection2 from "../components/CommentSection2";
 import MySlider from "../components/Slider";
 
-const images = [
-  { src: "../assets/sigiriya.png" },
-  { src: sigiriya },
-  { src: "../assets/sigiriya.png" },
-  { src: "../assets/sigiriya.png" },
-];
+const images = [{ src: sigiriya }, { src: sigiriya }, { src: sigiriya }];
 
 const slides = [
-  { id: 1, image:sigiriya, altText: 'Image 1' },
-  { id: 2, image: sigiriya, altText: 'Image 2' },
+  { id: 1, image: sigiriya, altText: "Image 1" },
+  { id: 2, image: sigiriya, altText: "Image 2" },
   // Add more slide objects here
 ];
 
@@ -41,13 +36,9 @@ const commentsData = [
     helpfulCount: 102,
     image: "path/to/sigiriya_image.jpg",
   },
-  
 ];
 
-
-
-
-const ratingPresentages = { 5: 80, 4: 15, 3: 3, 2: 1, 1: 1 };
+const ratingPresentages = { 4: 25, 5: 80, 3: 3, 2: 1, 1: 1 };
 
 const price = 2500; // Example price
 const mapsUrl = "https://maps.google.com/?q=Sigiriya"; // Example Google Maps URL
@@ -80,16 +71,18 @@ export default function FDetialPage() {
         />
       </div>
       <div className="mb-10">
-        <MySlider slides={slides}/>
+        <MySlider slides={slides} />
       </div>
       {/* <MySlider slides={slides}/> */}
       <div className="mb-10 ml-3 mr-3">
-
-
-        <div><RatingComponent totalRating={4.4}
-          reviewsCount={"2.2"} ratings={ratingPresentages}/>
+        <div>
+          <RatingComponent
+            totalRating={4.4}
+            reviewsCount={"2.2"}
+            ratings={ratingPresentages}
+          />
         </div>
-        <CommentSection2 commentsData={commentsData}/>
+        <CommentSection2 commentsData={commentsData} />
       </div>
     </Container>
   );
