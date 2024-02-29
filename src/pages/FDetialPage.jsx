@@ -7,8 +7,15 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 import RatingComponent from "../components/RatingSection";
 import CommentSection2 from "../components/CommentSection2";
 import MySlider from "../components/MySlider";
+import ScrollSlider from "../components/ScrollSlider";
 
-const images = [{ src: sigiriya }, { src: sigiriya }, { src: sigiriya }];
+const images = [
+  { src: sigiriya },
+  { src: sigiriya },
+  { src: sigiriya },
+  { src: sigiriya },
+  { src: sigiriya },
+];
 
 const slides = [
   { id: 1, image: sigiriya, altText: "Image 1" },
@@ -77,10 +84,7 @@ export default function FDetialPage() {
           className=" text-gray-50 bg-blue-500"
         />
         <div className="mb-10">
-          <h1 className="text-3xl font-bold mb-3 text-gray-900 font-inter">
-            Community Gallery
-          </h1>
-          <MySlider slides={slides} />
+          <ScrollSlider images={images} />
         </div>
         <div className="mb-10 ml-3 mr-3">
           <div>
