@@ -65,11 +65,15 @@ export default function HomePage() {
     <>
       <FixedIcon />
       <NavBar />
-      <div className="relative">
+      <div className="relative ">
         <div className=" bg-gradient-to-b from-black absolute h-[100%] w-[100%] top-0 left-0 opacity-65 z-10 "></div>
         <HeaderImageCarousel
           images={imageList}
           hideBottomTab={true}
+          smImgHeight={"h-[360px]"}
+          mdImgHeight={"md:h-[540px]"}
+          lgImgHeight={"lg:h-[640px]"}
+          xlImgHeight={"xl:h-[680px]"}
         ></HeaderImageCarousel>
       </div>
       <Container className={" p-10 my-10 md:p-16 lg:p-20 "}>

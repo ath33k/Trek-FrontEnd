@@ -1,14 +1,30 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-const HeaderImageCarousel = ({ images, className, hideBottomTab = false }) => {
+const HeaderImageCarousel = ({
+  images,
+  className,
+  smImgHeight,
+  mdImgHeight,
+  lgImgHeight,
+  xlImgHeight,
+  hideBottomTab = false,
+}) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((current) => (current + 1) % images.length);
+    }, 3000); // Change the image every 3 seconds
+
+    return () => clearInterval(interval); // Cleanup the interval on component unmount
+  }, [images.length, activeIndex]);
+
   return (
-    <div className={"relative w-full  " + className}>
-      <div className="overflow-hidden">
+    <div className={"relative w-full " + className}>
+      <div className="overflow-hidden ">
         <div
-          className="whitespace-nowrap transition-transform duration-700"
+          className="whitespace-nowrap transition-transform duration-700 "
           style={{ transform: `translateX(-${activeIndex * 100}%)` }}
         >
           {images.map((image, index) => (
@@ -16,7 +32,7 @@ const HeaderImageCarousel = ({ images, className, hideBottomTab = false }) => {
               key={index}
               src={image.src}
               alt={`Slide ${index}`}
-              className="inline-block w-full object-cover h-[320px] md:h-[500px]"
+              className={`inline-block w-full object-cover ${smImgHeight} ${mdImgHeight} ${lgImgHeight} ${xlImgHeight}`}
               animate={{
                 opacity: [0, 1],
                 backgroundColor: ["black", "transparent"],
