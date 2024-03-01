@@ -5,16 +5,16 @@ import { MdMyLocation } from "react-icons/md";
 
 export default function Map({
   location,
-  currMarker,
+  userLocation,
   direction,
   destinationMarkerOnClick,
-  currMarkerOnClick,
+  userLocationOnClick,
   mapOnClick,
   className,
 }) {
   const mapRef = useRef();
 
-  const destination = useMemo(() => location, [location]);
+  const currDestination = useMemo(() => location, [location]);
 
   const options = useMemo(
     () => ({
@@ -36,15 +36,16 @@ export default function Map({
       </div>
       <GoogleMap
         zoom={10}
-        center={destination}
+        center={currDestination}
         mapContainerClassName="map-container w-full h-full"
         options={options}
         onLoad={onLoad}
         onClick={mapOnClick}
       >
-        <MarkerF position={destination} />
+        <MarkerF position={currDestination} />
 
-        {currMarker && <MarkerF position={currMarker} icon={emojiPeople} />}
+        {/* user location marker displays on map */}
+        {userLocation && <MarkerF position={userLocation} icon={emojiPeople} />}
 
         {direction && (
           <DirectionsRenderer

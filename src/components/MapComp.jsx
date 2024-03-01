@@ -3,7 +3,7 @@ import MapDetails from "./MapDetails";
 import Map from "./Map";
 
 export default function MapComp() {
-  const [marker, setMarker] = useState(null);
+  const [userLocation, setUserLocation] = useState(null);
 
   const [direction, setDirection] = useState({
     origin: null,
@@ -12,7 +12,7 @@ export default function MapComp() {
   });
 
   function handleMapClick(e) {
-    setMarker({ lat: e.latLng.lat(), lng: e.latLng.lng() });
+    setUserLocation({ lat: e.latLng.lat(), lng: e.latLng.lng() });
     console.log(e.latLng.lat() + " " + e.latLng.lng());
   }
 
@@ -22,15 +22,15 @@ export default function MapComp() {
   return (
     <div className="flex h-screen m-8 rounded-2xl overflow-hidden">
       <MapDetails
-        marker={marker}
-        setMarker={setMarker}
+        userLocation={userLocation}
+        setUserLocation={setUserLocation}
         direction={direction}
         setDirection={setDirection}
         destination={destination}
       />
       <Map
         location={destination}
-        currMarker={marker}
+        userLocation={userLocation}
         mapOnClick={handleMapClick}
         direction={direction}
       />

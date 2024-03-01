@@ -3,29 +3,29 @@ import { useState, useRef, useEffect } from "react";
 import { MdOutlineDone } from "react-icons/md";
 
 export default function MapDetails({
-  marker,
-  setMarker,
+  userLocation,
+  setUserLocation,
   direction,
   setDirection,
   destination,
 }) {
   const [distance, setDistance] = useState("");
-  const originRef = useRef();
+  const inputFieldRef = useRef();
 
   useEffect(
     function () {
-      fetchDirections(marker);
+      fetchDirections(userLocation);
     },
 
-    [marker]
+    [userLocation]
   );
 
-  async function fetchDirections(marker) {
-    if (!marker) return;
+  async function fetchDirections(location) {
+    if (!location) return;
 
     const service = new window.google.maps.DirectionsService();
     const result = await service.route({
-      origin: marker,
+      origin: location,
       destination: destination,
       travelMode: window.google.maps.TravelMode.DRIVING,
     });
@@ -34,6 +34,7 @@ export default function MapDetails({
     setDistance(result.routes[0].legs[0].distance.text);
   }
 
+  // This function Converts address name to latitude and longtitude value.
   function convertLocationAddress(location, setLatLng) {
     const geocoder = new window.google.maps.Geocoder();
     geocoder.geocode({ address: location }, function (result, status) {
@@ -48,15 +49,15 @@ export default function MapDetails({
   }
 
   function setLatLng(lat, lng) {
-    setMarker({ lat: lat, lng: lng });
+    setUserLocation({ lat: lat, lng: lng });
   }
 
-  function handleClick() {
-    if (!originRef.current.value) return;
-    convertLocationAddress(originRef.current.value, setLatLng);
-    fetchDirections(originRef.current.value);
-    console.log(originRef.current.value);
-    originRef.current.value = "";
+  function handleInputFieldBtn() {
+    if (!inputFieldRef.current.value) return;
+    convertLocationAddress(inputFieldRef.current.value, setLatLng);
+    fetchDirections(inputFieldRef.current.value);
+    console.log(inputFieldRef.current.value);
+    inputFieldRef.current.value = "";
   }
 
   return (
@@ -71,22 +72,23 @@ export default function MapDetails({
             type="text"
             placeholder="Destination"
             className="text-white rounded-sm p-1 px-4 w-[200px] bg-transparent border-2 border-solid border-white my-4 border-opacity-50 outline-none focus:border-blue-500 focus:rounded-lg"
-            ref={originRef}
+            ref={inputFieldRef}
           />
         </Autocomplete>
 
+        {/* below is a button which handle input field value  */}
         <span
           className="group p-1 border-2 rounded-lg cursor-pointer hover:border-blue-500 hover:text-blue-400 transition-all duration-200"
-          onClick={handleClick}
+          onClick={handleInputFieldBtn}
         >
           <MdOutlineDone className=" group-hover:scale-125 text-2xl hover:scale-125 transition-all duration-300 " />
         </span>
       </div>
-      {direction && <Distance dist={distance} />}
+      {direction && <Distance distance={distance} />}
     </div>
   );
 }
 
-function Distance({ dist }) {
-  return <div>Distance : {dist}</div>;
+function Distance({ distance }) {
+  return <div>Distance : {distance}</div>;
 }
