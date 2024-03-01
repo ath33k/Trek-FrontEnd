@@ -1,6 +1,7 @@
 import { Autocomplete } from "@react-google-maps/api";
 import { useState, useRef, useEffect } from "react";
 import { MdOutlineDone } from "react-icons/md";
+import { directionFetcher, getDistance } from "../utils/mapFunctions";
 
 export default function MapDetails({
   userLocation,
@@ -14,24 +15,37 @@ export default function MapDetails({
 
   useEffect(
     function () {
-      fetchDirections(userLocation);
+      fetchDirection(userLocation, destination);
     },
 
     [userLocation]
   );
 
-  async function fetchDirections(location) {
+  // async function fetchDirections(location) {
+  //   if (!location) return;
+
+  //   const service = new window.google.maps.DirectionsService();
+  //   const result = await service.route({
+  //     origin: location,
+  //     destination: destination,
+  //     travelMode: window.google.maps.TravelMode.DRIVING,
+  //   });
+
+  //   setDirection(result);
+  //   setDistance(result.routes[0].legs[0].distance.text);
+  // }
+
+  async function fetchDirection(location, destination) {
     if (!location) return;
-
-    const service = new window.google.maps.DirectionsService();
-    const result = await service.route({
-      origin: location,
-      destination: destination,
-      travelMode: window.google.maps.TravelMode.DRIVING,
-    });
-
-    setDirection(result);
-    setDistance(result.routes[0].legs[0].distance.text);
+    const res = await directionFetcher(location, destination);
+    // if (!res) return;
+    console.log(res + "success");
+    setDirection(res);
+    // setDistance(res.routes[0].legs[0].distance.text);
+    const distance = await getDistance(destination, location);
+    // if (!distance) return;
+    console.log(distance + "success");
+    setDistance(distance);
   }
 
   // This function Converts address name to latitude and longtitude value.
@@ -55,7 +69,7 @@ export default function MapDetails({
   function handleInputFieldBtn() {
     if (!inputFieldRef.current.value) return;
     convertLocationAddress(inputFieldRef.current.value, setLatLng);
-    fetchDirections(inputFieldRef.current.value);
+    // fetchDirections(inputFieldRef.current.value);
     console.log(inputFieldRef.current.value);
     inputFieldRef.current.value = "";
   }

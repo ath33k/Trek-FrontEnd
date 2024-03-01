@@ -44,9 +44,10 @@ export default function Map({
       >
         <MarkerF position={currDestination} />
 
-        {/* user location marker displays on map */}
+        {/* user location marker displays on map*/}
         {userLocation && <MarkerF position={userLocation} icon={emojiPeople} />}
 
+        {/* Direction (route) renders on the map */}
         {direction && (
           <DirectionsRenderer
             directions={direction}
