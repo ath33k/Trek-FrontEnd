@@ -1,5 +1,6 @@
 import { Autocomplete } from "@react-google-maps/api";
 import { useState, useRef, useEffect } from "react";
+import { MdOutlineDone } from "react-icons/md";
 
 export default function MapDetails({
   marker,
@@ -60,21 +61,26 @@ export default function MapDetails({
 
   return (
     <div className=" w-2/5 bg-black text-white p-8 md:p-12">
-      <h1 className="text-2xl font-bold">CONTROLLER</h1>
-      <h2>Tap on the map Select your current location or enter below</h2>
+      <h1 className="text-2xl font-bold mb-4">CONTROLLER</h1>
+      <h2 className="font-bold">To Select your location :</h2>
+      <p>Tap on the map or Type Below</p>
 
       <div className="flex flex-wrap mb-5 md:mb-2 md:gap-5 md:items-center ">
         <Autocomplete>
           <input
             type="text"
             placeholder="Destination"
-            className="text-white rounded-sm p-1 px-4 w-[200px] bg-transparent border-2 border-solid border-white my-4"
+            className="text-white rounded-sm p-1 px-4 w-[200px] bg-transparent border-2 border-solid border-white my-4 border-opacity-50 outline-none focus:border-blue-500 focus:rounded-lg"
             ref={originRef}
           />
         </Autocomplete>
-        <button className="rounded-xl border-2 p-1 px-2 " onClick={handleClick}>
-          ✔️
-        </button>
+
+        <span
+          className="group p-1 border-2 rounded-lg cursor-pointer hover:border-blue-500 hover:text-blue-400 transition-all duration-200"
+          onClick={handleClick}
+        >
+          <MdOutlineDone className=" group-hover:scale-125 text-2xl hover:scale-125 transition-all duration-300 " />
+        </span>
       </div>
       {direction && <Distance dist={distance} />}
     </div>

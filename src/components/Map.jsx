@@ -1,6 +1,7 @@
 import { useCallback, useMemo, useRef } from "react";
 import { GoogleMap, MarkerF, DirectionsRenderer } from "@react-google-maps/api";
 import emojiPeople from "../assets/emojiPeople.svg";
+import { MdMyLocation } from "react-icons/md";
 
 export default function Map({
   location,
@@ -26,7 +27,13 @@ export default function Map({
 
   const onLoad = useCallback((map) => (mapRef.current = map), []);
   return (
-    <div className={`map h-full w-4/5  ${className}`}>
+    <div className={`relative map h-full w-4/5  ${className}`}>
+      <div
+        className="absolute bottom-14 right-5 z-50 md:right-10 cursor-pointer"
+        onClick={() => mapRef.current.panTo(location)}
+      >
+        <MdMyLocation className="text-4xl" />
+      </div>
       <GoogleMap
         zoom={10}
         center={destination}
