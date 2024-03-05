@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 export default function ExpandableText({
@@ -26,7 +27,7 @@ export default function ExpandableText({
     });
   }, []);
 
-  const text = expanded ? children : children.slice(0, tarLength);
+  const text = expanded ? children : children.slice(0, tarLength) + "... ";
   return (
     <motion.p
       initial={{ opacity: 0 }}
@@ -37,10 +38,9 @@ export default function ExpandableText({
       {children.length > tarLength && (
         <button
           onClick={() => setExpanded(!expanded)}
-          className="text-blue-600"
+          className="text-stone-400"
         >
-          &nbsp;
-          {expanded ? "See less" : "...See more"}
+          {expanded ? "See less" : "See more"}
         </button>
       )}
     </motion.p>

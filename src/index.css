@@ -7,4 +7,5 @@
 * {
   scrollbar-width: none;
   -ms-overflow-style: none;
+  user-select: none;
 }
