@@ -8,15 +8,20 @@ import { MdAutoAwesome } from "react-icons/md";
 import FAB from "./components/FAB";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import AuthPage from "./pages/AuthPage";
-import LoadingScreen from "./components/LoadingScreen";
-import { ErrorBoundary } from "./components/ErrorBoundary";
-import AuthRoute from "./components/AuthRoute";
+import LoadingScreen from "./components/Loading/LoadingScreen";
+import { ErrorBoundary } from "./components/Errors/ErrorBoundary";
+import AuthRoute from "./components/Routes/AuthRoute";
+import ErrorScreen from "./components/Errors/ErrorScreen";
+import { navlinks } from "./navlinks";
+
+const AddDestination = lazy(() => import("./pages/AddDestination"));
 
 export default function App() {
   const navigator = useNavigate();
+  document.title = window.location.pathname.replaceAll("/", "") || "Home";
   return (
     <>
-      {window.location.pathname !== "/" && (
+      {/* {window.location.pathname !== "/" && (
         <FAB
           onClick={() => {
             if (window.location.pathname === "/") {
@@ -30,21 +35,23 @@ export default function App() {
         >
           <IoMdArrowRoundBack />
         </FAB>
-      )}
+      )} */}
       <ErrorBoundary>
         <Suspense fallback={<LoadingScreen />}>
           <Routes>
             <Route element={<AuthRoute />}>
-              <Route path="/" element={<FDetialPage />} />
+              <Route path={navlinks.home.path} element={<FDetialPage />} />
               <Route path="/hometest" element={<HomePage />} />
 
-              <Route path="/map" element={<MapViewPage />} />
+              <Route path={navlinks.map.path} element={<MapViewPage />} />
+              <Route path={navlinks.add.path} element={<AddDestination />} />
             </Route>
-            <Route path="/login" element={<AuthPage />} />
+            <Route path={navlinks.login.path} element={<AuthPage />} />
+            <Route path="*" element={<ErrorScreen type={"404"} />} />
           </Routes>
         </Suspense>
       </ErrorBoundary>
-      <FAB
+      {/* <FAB
         className={
           "fixed bottom-5 transition-colors duration-500 text-cyan-200 hover:bg-cyan-800 right-5 z-[100] bg-cyan-700 rounded-full p-3"
         }
@@ -54,7 +61,7 @@ export default function App() {
             fontSize: "28px",
           }}
         />
-      </FAB>
+      </FAB> */}
     </>
   );
 }

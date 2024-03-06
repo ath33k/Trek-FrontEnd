@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useNavigate } from "react-router-dom";
-import Container from "./Container";
-import { navlinks } from "../navlinks";
+import Container from "../Container";
+import { navlinks } from "../../navlinks";
 
 export default function ErrorScreen({ type }) {
   const navigate = useNavigate();

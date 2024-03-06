@@ -7,4 +7,12 @@ export const navlinks = {
     name: "Login",
     path: "/login",
   },
+  add: {
+    name: "Add",
+    path: "/add",
+  },
+  map: {
+    name: "Map",
+    path: "/map",
+  },
 };
