@@ -150,7 +150,7 @@ export default function AddDestination() {
             onImageChange={(file) => {
               handleFileChange(file, "mobileImages");
             }}
-            description="More Square lookig Images"
+            description="More Square looking Images"
           />
         </div>
         <TextInput
