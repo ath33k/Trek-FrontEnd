@@ -34,10 +34,10 @@ export default function App() {
       <ErrorBoundary>
         <Suspense fallback={<LoadingScreen />}>
           <Routes>
-            <Route path="/" element={<FDetialPage />} />
-            <Route path="/hometest" element={<HomePage />} />
-            <Route path="/login" element={<AuthPage />} />
             <Route element={<AuthRoute />}>
+              <Route path="/" element={<FDetialPage />} />
+              <Route path="/hometest" element={<HomePage />} />
+              <Route path="/login" element={<AuthPage />} />
               <Route path="/map" element={<MapViewPage />} />
             </Route>
           </Routes>
