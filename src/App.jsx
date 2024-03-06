@@ -10,6 +10,7 @@ import { IoMdArrowRoundBack } from "react-icons/io";
 import AuthPage from "./pages/AuthPage";
 import LoadingScreen from "./components/LoadingScreen";
 import { ErrorBoundary } from "./components/ErrorBoundary";
+import AuthRoute from "./components/AuthRoute";
 
 export default function App() {
   const navigator = useNavigate();
@@ -34,9 +35,11 @@ export default function App() {
         <Suspense fallback={<LoadingScreen />}>
           <Routes>
             <Route path="/" element={<FDetialPage />} />
-            <Route path="/map" element={<MapViewPage />} />
             <Route path="/hometest" element={<HomePage />} />
             <Route path="/login" element={<AuthPage />} />
+            <Route element={<AuthRoute />}>
+              <Route path="/map" element={<MapViewPage />} />
+            </Route>
           </Routes>
         </Suspense>
       </ErrorBoundary>
