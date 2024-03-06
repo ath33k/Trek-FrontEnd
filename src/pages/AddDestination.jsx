@@ -48,7 +48,7 @@ export default function AddDestination() {
         desktopImages: formData.desktopImages.map((file) => file.name),
         mobileImages: formData.mobileImages.map((file) => file.name),
         tags: formData.tags.trim().toLowerCase().split(","),
-        "other-names": formData["other-names"].trim().toLowerCase().split(","),
+        "other-names": formData["other-names"].trim().split(","),
       });
 
       formData.desktopImages.forEach(async (file, index) => {
