@@ -76,7 +76,7 @@ export default function HomePage() {
           xlImgHeight={"xl:h-[680px]"}
         ></HeaderImageCarousel>
       </div>
-      <Container className={" p-10 my-10 md:p-16 lg:p-20 "}>
+      <Container className={" p-14 my-16 md:p-24 lg:p-32 "}>
         <h2 className=" text-2xl md:text-3xl text-center font-bold">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut
           praesentium mollitia assumenda quos natus voluptate veniam molestias
