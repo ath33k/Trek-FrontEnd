@@ -3,14 +3,25 @@ import ErrorScreen from "../components/Errors/ErrorScreen";
 import ImageInput from "../components/Inputs/ImageInput";
 import TextInput from "../components/Inputs/TextInput";
 import { useUploadFile } from "react-firebase-hooks/storage";
+import { useCollectionDataOnce } from "react-firebase-hooks/firestore";
 import LoadingScreen from "../components/Loading/LoadingScreen";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { addDestination } from "../firefunctions";
 import { db, storage } from "../config/firebase";
 import { ref as storageRef } from "firebase/storage";
+import { collection } from "firebase/firestore";
+import { MdExpandLess, MdExpandMore } from "react-icons/md";
 export default function AddDestination() {
   const [uploadFile, uploading, snapshot, error] = useUploadFile();
+  const [desdata, desloading, deserror] = useCollectionDataOnce(
+    collection(db, "destinations")
+  );
   const [formData, setFormData] = useState(null);
+  const [showDestinations, setShowDestinations] = useState(true);
+
+  useEffect(() => {
+    alert("Check whether destination is already in the database.");
+  }, []);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -59,7 +70,7 @@ export default function AddDestination() {
     }
   };
 
-  if (error) {
+  if (error || deserror) {
     return <ErrorScreen />;
   }
   if (uploading) {
@@ -74,6 +85,13 @@ export default function AddDestination() {
       />
     );
   }
+  if (desloading) {
+    return (
+      <LoadingScreen
+        messages={["Fetching Data", "Please Wait", "This may take a while"]}
+      />
+    );
+  }
   return (
     <form
       onSubmit={(e) => {
@@ -83,6 +101,36 @@ export default function AddDestination() {
     >
       <Container className={" flex flex-col gap-3 pt-5 pb-10 px-2"}>
         <h1 className="text-3xl font-bold text-center">Add Destination</h1>
+        <div
+          className=" relative cursor-pointer flex gap-3 items-center border px-4 py-2 "
+          onClick={() => setShowDestinations(!showDestinations)}
+        >
+          <p className="text-lg font-semibold text-red-600">
+            {desdata.length > 0
+              ? `Destionations in Database: ${desdata.length}`
+              : "No Destinations in Database"}
+          </p>
+          {showDestinations ? (
+            <MdExpandLess className="text-2xl text-red-600" />
+          ) : (
+            <MdExpandMore className="text-2xl text-red-600" />
+          )}
+
+          {desdata && showDestinations && (
+            <div className="absolute top-14 left-0 w-full bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg shadow-lg">
+              <ul className="flex flex-col gap-2 p-2">
+                {desdata.map((dest, index) => (
+                  <li
+                    key={index}
+                    className="hover:bg-gray-100 dark:hover:bg-gray-700 p-2 rounded-lg"
+                  >
+                    {dest.name}-{dest.city}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
         <div>
           <h3 className="text-xl font-bold mb-2 text-center">
             Desktop View Images
