@@ -37,9 +37,10 @@ export default function App() {
             <Route element={<AuthRoute />}>
               <Route path="/" element={<FDetialPage />} />
               <Route path="/hometest" element={<HomePage />} />
-              <Route path="/login" element={<AuthPage />} />
+
               <Route path="/map" element={<MapViewPage />} />
             </Route>
+            <Route path="/login" element={<AuthPage />} />
           </Routes>
         </Suspense>
       </ErrorBoundary>
