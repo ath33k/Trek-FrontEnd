@@ -6,6 +6,7 @@ export default function RatingComponent({
   totalRating,
   reviewsCount,
   ratings,
+
 }) {
   const renderStars = (rating) => {
     let stars = [];
@@ -74,8 +75,8 @@ export default function RatingComponent({
       </div>
       <div className="flex gap-4 items-center">
         <div className="flex flex-col items-center">
-          <span className="text-5xl font-bold text-green-600">
-            {totalRating}
+          <span className={`text-5xl font-bold ${(totalRating > 0) ? "text-green-600" : "text-grey-500"}`}>
+            {(totalRating > 0) ? totalRating : "N\\A"}
           </span>
           <span className="flex text-yellow-400 text-xl">
             {renderStars(totalRating)}
@@ -84,21 +85,24 @@ export default function RatingComponent({
         </div>
         <div className="w-full">{renderRatingBars()}</div>
       </div>
-      <div className="flex justify-center gap-2 mt-4">
+      <div className="flex flex-wrap justify-center gap-2 mt-4"> 
         {/* Icons would be replaced with actual SVGs or icon components */}
-        <button className="p-2 border border-gray-300 rounded text-gray-600">
+        <button className="p-2 border  border-gray-300 rounded text-gray-600">
           Warm
         </button>
-        <button className="p-2 border border-gray-300 rounded text-gray-600">
+        <button className="p-2 border  border-gray-300 rounded text-gray-600">
           Hike
         </button>
-        <button className="p-2 border border-gray-300 rounded text-gray-600">
+        <button className="p-2 border  border-gray-300 rounded text-gray-600">
           Treking
         </button>
-        <button className="p-2 border border-gray-300 rounded text-gray-600">
+        <button className="p-2 border  border-gray-300 rounded text-gray-600">
           Beach
         </button>
-        <button className="p-2 border border-gray-300 rounded text-gray-600">
+        <button className="p-2 border  border-gray-300 rounded text-gray-600">
+          Cold
+        </button>
+        <button className="p-2 border  border-gray-300 rounded text-gray-600">
           Cold
         </button>
       </div>

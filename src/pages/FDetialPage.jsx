@@ -17,6 +17,8 @@ const images = [
   { src: sigiriya },
 ];
 
+const commentsZero = [];
+
 const commentsData = [
   {
     id: 1,
@@ -83,12 +85,13 @@ export default function FDetialPage() {
         <div className="mb-10 ml-3 mr-3">
           <div>
             <RatingComponent
-              totalRating={4.4}
-              reviewsCount={"2.2"}
+              totalRating={0}
+              reviewsCount={"0"}
               ratings={ratingPresentages}
+              
             />
           </div>
-          <CommentSection2 commentsData={commentsData} />
+          <CommentSection2 commentsData={commentsZero} />
         </div>
       </div>
     </Container>
