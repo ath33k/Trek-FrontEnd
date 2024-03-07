@@ -65,13 +65,11 @@ export const NavBar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 justify-between w-full items-center ${
-        isScrolled
-          ? "backdrop-filter backdrop-blur-md bg-black bg-opacity-20"
-          : ""
-      }  z-50 text-white `}
+      className={`fixed top-0 left-0 justify-between w-full z-50 text-black  bg-white ${
+        isScrolled ? "border-gray-200 border-b-2" : ""
+      }`}
     >
-      <div className="flex items-center p-3 md:w-[100%] lg:w-[100%]">
+      <div className="flex items-center p-2 mx-4 sm:mx-8 md:mx-14 lg:mx-32">
         <div className="flex items-center justify-between  w-auto md:w-[100%]">
           <GiHamburgerMenu
             onClick={handleHamburgerMenu}
@@ -94,7 +92,7 @@ export const NavBar = () => {
           <Chip
             label={"Search"}
             endIcon={<FaSearch />}
-            className=" hidden md:flex lg:flex bg-transparent border-solid border-white b border border-1  hover:bg-white hover:text-black  md:mr-10 "
+            className=" hidden md:flex lg:flex bg-transparent border-solid border-black  border border-1  hover:bg-black hover:text-blue-300  md:mr-10 "
           />
         </div>
 
