@@ -41,7 +41,7 @@ const HeaderImageCarousel = ({ images, className }) => {
                 className={`inline-block pointer-events-none w-full 
                   ${
                     !fshandle.active
-                      ? "object-cover h-[320px] md:h-[500px]"
+                      ? "object-cover aspect-[4/3] md:aspect-video"
                       : " object-contain h-full w-full"
                   }`}
                 animate={{

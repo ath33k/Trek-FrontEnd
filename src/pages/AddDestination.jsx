@@ -189,7 +189,7 @@ export default function AddDestination() {
             label={"Longitude"}
             placeholder={"eg: 80.7459"}
             type="number"
-            step="0.01"
+            step="0.00001"
           />
           <TextInput
             onChange={(e) => {
@@ -198,7 +198,7 @@ export default function AddDestination() {
             label={"Latitude"}
             placeholder={"eg: 7.8731"}
             type="number"
-            step="0.01"
+            step="0.00001"
           />
         </div>
         <TextInput
