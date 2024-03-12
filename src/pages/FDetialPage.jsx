@@ -2,6 +2,7 @@ import Container from "../components/Container";
 import ExpandableText from "../components/ExpandableText";
 import HeaderImageCarousel from "../components/HeaderImageCarousel";
 import sigiriya from "../assets/sigiriya.png";
+import ninearch from "../assets/yves-alarie-3R50kTNBKiE-unsplash.jpg";
 import Chip from "../components/Chip";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import RatingComponent from "../components/RatingSection";
@@ -11,7 +12,7 @@ import ScrollSlider from "../components/ScrollSlider";
 
 const images = [
   { src: sigiriya },
-  { src: sigiriya },
+  { src: ninearch },
   { src: sigiriya },
   { src: sigiriya },
   { src: sigiriya },

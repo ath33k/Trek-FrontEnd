@@ -3,7 +3,7 @@ import ErrorScreen from "../components/Errors/ErrorScreen";
 import ImageInput from "../components/Inputs/ImageInput";
 import TextInput from "../components/Inputs/TextInput";
 import { useUploadFile } from "react-firebase-hooks/storage";
-import { useCollectionDataOnce } from "react-firebase-hooks/firestore";
+import { useCollectionData } from "react-firebase-hooks/firestore";
 import LoadingScreen from "../components/Loading/LoadingScreen";
 import { useEffect, useState } from "react";
 import { addDestination } from "../firefunctions";
@@ -13,14 +13,14 @@ import { collection } from "firebase/firestore";
 import { MdExpandLess, MdExpandMore } from "react-icons/md";
 export default function AddDestination() {
   const [uploadFile, uploading, snapshot, error] = useUploadFile();
-  const [desdata, desloading, deserror] = useCollectionDataOnce(
+  const [desdata, desloading, deserror] = useCollectionData(
     collection(db, "destinations")
   );
   const [formData, setFormData] = useState(null);
-  const [showDestinations, setShowDestinations] = useState(true);
+  const [showDestinations, setShowDestinations] = useState(false);
 
   useEffect(() => {
-    alert("Check whether destination is already in the database.");
+    //alert("Check whether destination is already in the database.");
   }, []);
 
   const handleInputChange = (e) => {
@@ -116,7 +116,7 @@ export default function AddDestination() {
             <MdExpandMore className="text-2xl text-red-600" />
           )}
 
-          {desdata && showDestinations && (
+          {showDestinations && (
             <div className="absolute top-14 left-0 w-full bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg shadow-lg">
               <ul className="flex flex-col gap-2 p-2">
                 {desdata.map((dest, index) => (
@@ -189,7 +189,7 @@ export default function AddDestination() {
             label={"Longitude"}
             placeholder={"eg: 80.7459"}
             type="number"
-            step="any"
+            step="0.01"
           />
           <TextInput
             onChange={(e) => {
@@ -198,7 +198,7 @@ export default function AddDestination() {
             label={"Latitude"}
             placeholder={"eg: 7.8731"}
             type="number"
-            step="any"
+            step="0.01"
           />
         </div>
         <TextInput
@@ -222,6 +222,23 @@ export default function AddDestination() {
           label={"Province"}
           placeholder={"eg: Central"}
         />
+        <select
+          required
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+          onChange={(e) => {
+            handleInputChange(e);
+          }}
+          name="uploaderName"
+        >
+          <option value={""} disabled selected>
+            Uploader Name
+          </option>
+          <option value={"Atheek"}>Atheek</option>
+          <option value={"Bhanuka"}>Bhanuka</option>
+          <option value={"Duvin"}>Duvin</option>
+          <option value={"Lakshan"}>Lakshan</option>
+          <option value={"Saraah"}>Saraah</option>
+        </select>
         <button
           type="submit"
           className="bg-blue-500 text-white rounded-lg p-2.5 w-full"
