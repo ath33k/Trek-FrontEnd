@@ -89,9 +89,9 @@ export default function HomePage() {
             to="whereTo"
             smooth={true}
             // spy={true}
-            className="inline-block m-2 p-1 px-2 md:p-2 md:px-4 border-2 hover:bg-black hover:border-transparent cursor-pointer"
+            className="inline-block m-2 p-1 px-2 md:p-2 md:px-4 border-2 hover:bg-black hover:bg-opacity-70 hover:border-transparent cursor-pointer hover:rounded-xl transition-all duration-400 "
           >
-            Get Started
+            Get Started <span>&#10507;</span>
           </LinkScroll>
         </div>
       </div>
@@ -152,7 +152,7 @@ export default function HomePage() {
           </div>
         </Container>
       </Container>
-      <Container className={" p-16 my-28 md:p-24 lg:p-28 "}>
+      <Container className={" p-16 my-24 md:p-24 lg:p-28 "}>
         <h2 className=" text-2xl md:text-2xl xl:text-3xl text-center font-bold">
           {/* UNLEASH YOUR WANDERLUST. WE'LL FIND YOUR PERFECT SPOT */}
           &rdquo;THE GREATEST JOURNEY BEGINS WITH A SINGLE STEP&ldquo;
