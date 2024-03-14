@@ -16,7 +16,13 @@ export default function ScrollSlider({
       <h2 className="text-2xl font-bold mb-3 text-gray-900 font-inter">
         {title}
       </h2>
-      <div className={` flex gap-2 items-center overflow-scroll  ${hClass}`}>
+      <div
+        className={` flex gap-2 items-center overflow-scroll  ${hClass}`}
+        style={{
+          scrollbarWidth: "none",
+          msOverflowStyle: "none",
+        }}
+      >
         {images ? (
           images.map((image, index) => {
             return (
