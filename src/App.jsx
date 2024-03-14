@@ -1,6 +1,6 @@
 import { Suspense, lazy } from "react";
 
-const HomePage = lazy(() => import("./pages/HomePage"));
+//const HomePage = lazy(() => import("./pages/HomePage"));
 import { Routes, Route, useNavigate } from "react-router-dom";
 const FDetialPage = lazy(() => import("./pages/FDetialPage"));
 const MapViewPage = lazy(() => import("./pages/MapViewPage"));
@@ -13,6 +13,7 @@ import { ErrorBoundary } from "./components/Errors/ErrorBoundary";
 import AuthRoute from "./components/Routes/AuthRoute";
 import ErrorScreen from "./components/Errors/ErrorScreen";
 import { navlinks } from "./navlinks";
+import HomePage from "./pages/HomePage";
 
 const AddDestination = lazy(() => import("./pages/AddDestination"));
 

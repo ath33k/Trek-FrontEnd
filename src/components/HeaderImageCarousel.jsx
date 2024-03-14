@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
 
-const HeaderImageCarousel = ({ images, className }) => {
+const HeaderImageCarousel = ({ images, className, hideTab = false }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const fshandle = useFullScreenHandle();
 
@@ -52,7 +52,11 @@ const HeaderImageCarousel = ({ images, className }) => {
             ))}
           </div>
         </div>
-        <div className="absolute bottom-0 left-0 right-0 bg-white flex justify-center pt-4 pb-8 rounded-t-[40px]">
+        <div
+          className={`absolute bottom-0 left-0 right-0  flex justify-center pt-4 pb-8 rounded-t-[40px] ${
+            !hideTab && "bg-white"
+          }`}
+        >
           {images.map((_, index) => (
             <button
               key={index}

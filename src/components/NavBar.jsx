@@ -8,6 +8,7 @@ import { FaSearch } from "react-icons/fa";
 
 export const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(null);
 
   // when resizing for larger screen with menu state open and after come back to the smaller screen the menu still displays open.
   // used this to fix that issue
@@ -23,6 +24,24 @@ export const NavBar = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  useEffect(() => {
+    const handleScrollStart = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+
+    // const handleScrollEnd = () => {
+    //   setIsScrolled(false);
+    // };
+
+    window.addEventListener("scroll", handleScrollStart);
+    // window.addEventListener("scrollend", handleScrollEnd);
+    return () => {
+      window.removeEventListener("scroll", handleScrollStart);
+      // window.removeEventListener("scrollend", handleScrollEnd);
+    };
+  }, []);
+  console.log(isScrolled);
 
   function handleHamburgerMenu() {
     setIsOpen((curr) => !curr);
@@ -45,17 +64,23 @@ export const NavBar = () => {
   ];
 
   return (
-    <nav className="flex justify-between items-center bg-black/10 ">
-      <div className="flex items-center mx-5 p-3 md:w-[100%] lg:w-[100%]">
-        <div className="flex items-center justify-between w-[100%]">
+    <nav
+      className={`fixed top-0 left-0 justify-between w-full items-center ${
+        isScrolled
+          ? "backdrop-filter backdrop-blur-md bg-black bg-opacity-20"
+          : ""
+      }  z-50 text-white `}
+    >
+      <div className="flex items-center p-3 md:w-[100%] lg:w-[100%]">
+        <div className="flex items-center justify-between  w-auto md:w-[100%]">
           <GiHamburgerMenu
             onClick={handleHamburgerMenu}
             className="text-2xl sm:text-3xl cursor-pointer md:hidden lg:hidden  mr-5"
           />
 
-          <Logo />
+          <Logo className={"md:ml-10"} />
 
-          <ul className="hidden md:flex lg:flex ">
+          <ul className="hidden md:flex lg:flex text-[16px] lg:text-[18px] font-medium">
             {navBarLinks.map((link, index) => (
               <NavLink
                 to={link.path}
@@ -69,7 +94,7 @@ export const NavBar = () => {
           <Chip
             label={"Search"}
             endIcon={<FaSearch />}
-            className=" hidden md:flex lg:flex bg-transparent border-solid border-black b border border-1  hover:bg-black hover:text-white hover:border-white "
+            className=" hidden md:flex lg:flex bg-transparent border-solid border-white b border border-1  hover:bg-white hover:text-black  md:mr-10 "
           />
         </div>
 
@@ -99,7 +124,7 @@ function HamburgerLinks({ navBarLinks, onHandleMenu }) {
           style={{ transform: "rotate(90deg)" }}
           className="mt-2 mx-5 text-3xl sm:text-5xl cursor-pointer hover:text-blue-500"
         />
-        <ul className="flex flex-col items-center text-2xl sm:text-4xl md:text-4xl">
+        <ul className="flex flex-col items-center text-2xl sm:text-3xl">
           {navBarLinks.map((link, index) => (
             <NavLink
               to={link.path}
