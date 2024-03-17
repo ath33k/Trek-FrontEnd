@@ -89,7 +89,6 @@ export default function FDetialPage() {
               totalRating={0}
               reviewsCount={"0"}
               ratings={ratingPresentages}
-              
             />
           </div>
           <CommentSection2 commentsData={commentsZero} />
