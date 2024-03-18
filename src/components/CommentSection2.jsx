@@ -3,7 +3,7 @@ import { useState } from "react";
 import profilePic from "../assets/sigiriya.png"; // Replace with your actual profile image import
 import Rating from "react-rating-stars-component";
 
-const CommentSection2 = ({ commentsData }) => {
+const CommentSection2 = ({ commentsData = [] }) => {
   const [visibleComments, setVisibleComments] = useState(
     commentsData.slice(0, 2)
   );

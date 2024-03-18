@@ -2,18 +2,15 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
+import noimage from "../assets/No Image.jpg";
 
-const HeaderImageCarousel = ({ images, className, hideTab = false }) => {
+const HeaderImageCarousel = ({
+  images = [{ src: noimage }, { src: noimage }],
+  className,
+  hideTab = false,
+}) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const fshandle = useFullScreenHandle();
-
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setActiveIndex((current) => (current + 1) % images.length);
-  //   }, 3000); // Change the image every 3 seconds
-
-  //   return () => clearInterval(interval); // Cleanup the interval on component unmount
-  // }, [images.length, activeIndex]);
 
   return (
     <FullScreen handle={fshandle}>

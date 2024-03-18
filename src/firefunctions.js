@@ -1,5 +1,7 @@
 import { signInAnonymously } from "firebase/auth";
 import { addDoc, collection } from "firebase/firestore";
+import { getDownloadURL, ref } from "firebase/storage";
+import { storage } from "./config/firebase";
 
 export const extractUserData = (authData) => {
   try {
@@ -52,5 +54,17 @@ export const addDestination = async (db, destination) => {
   } catch (e) {
     console.error(e);
     return null;
+  }
+};
+
+export const getimageURL = async (imgid, path) => {
+  const _ref = ref(storage, path + imgid);
+  let url = null;
+
+  try {
+    url = await getDownloadURL(_ref);
+    return { src: url, error: null };
+  } catch (e) {
+    return { src: null, error: e };
   }
 };
