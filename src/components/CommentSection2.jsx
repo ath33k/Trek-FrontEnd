@@ -23,7 +23,7 @@ const CommentSection2 = ({ commentsData = [] }) => {
   };
 
   return (
-    <div className="space-y-8 ml-2 mr-2">
+    <div className="space-y-8">
       <div>
         {visibleComments.length > 0 ? (
           visibleComments.map((comment, idx) => (
@@ -97,7 +97,7 @@ const CommentSection2 = ({ commentsData = [] }) => {
         />
       </div>
 
-      <div className="flex items-center gap-2">
+      <div className="flex items-center justify-between">
         <img
           src={profilePic}
           alt="Your Profile"
@@ -107,7 +107,7 @@ const CommentSection2 = ({ commentsData = [] }) => {
           type="text"
           value={newComment}
           onChange={(e) => setNewComment(e.target.value)}
-          className="border p-2 rounded-lg flex-1"
+          className="border p-2 rounded-lg w-full"
           placeholder="Add a comment..."
         />
         <button
