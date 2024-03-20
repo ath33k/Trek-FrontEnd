@@ -3,6 +3,13 @@ import React from 'react';
 import Container from './Container';
 
 export default function NewCard({title, backgroundImage, width, height, description, rating, distance}){
+    const cardStyle = {
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        width: width,
+        height: height
+      };
   return (
     <Container>
         <div>
