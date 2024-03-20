@@ -15,4 +15,8 @@ export const navlinks = {
     name: "Map",
     path: "/map",
   },
+  prompt: {
+    name: "Trek AI Prompt",
+    path: "/prompt",
+  }
 };
