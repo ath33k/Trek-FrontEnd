@@ -18,6 +18,7 @@ const CommentSection2 = ({ commentsData = [] }) => {
   const handleSend = () => {
     if (newComment.trim()) {
       // Handle sending the comment to your server or state here
+      console.log("Sending comment:", newComment);
       setNewComment("");
     }
   };
@@ -101,7 +102,7 @@ const CommentSection2 = ({ commentsData = [] }) => {
         <img
           src={profilePic}
           alt="Your Profile"
-          className="w-10 h-10 rounded-full"
+          className="w-10 h-10 rounded-full object-cover"
         />
         <input
           type="text"

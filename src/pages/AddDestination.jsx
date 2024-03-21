@@ -47,7 +47,11 @@ export default function AddDestination() {
         // add only file names to the destination object
         desktopImages: formData.desktopImages.map((file) => file.name),
         mobileImages: formData.mobileImages.map((file) => file.name),
-        tags: formData.tags.trim().toLowerCase().split(","),
+        tags: formData.tags
+          .trim()
+          .toLowerCase()
+          .split(",")
+          .map((tag) => tag.trim()), // add this line .map, remove if an error occurs
         "other-names": formData["other-names"].trim().split(","),
       });
 
@@ -117,7 +121,12 @@ export default function AddDestination() {
           )}
 
           {showDestinations && (
-            <div className="absolute top-14 left-0 w-full bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg shadow-lg">
+            <div
+              style={{
+                scrollbarWidth: "thin",
+              }}
+              className="absolute top-14 left-0 w-full bg-white dark:bg-gray-800 border max-h-96 overflow-scroll border-gray-300 dark:border-gray-600 rounded-lg shadow-lg"
+            >
               <ul className="flex flex-col gap-2 p-2">
                 {desdata.map((dest, index) => (
                   <li
@@ -174,6 +183,7 @@ export default function AddDestination() {
           label={"Description"}
           placeholder={"Description about the place"}
         />
+
         <TextInput
           onChange={(e) => {
             handleInputChange(e);

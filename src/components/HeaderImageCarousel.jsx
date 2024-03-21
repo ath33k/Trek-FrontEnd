@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
-import noimage from "../assets/No Image.jpg";
+import noimage from "../assets/imageback.jpg";
 
 const HeaderImageCarousel = ({
   images = [{ src: noimage }, { src: noimage }],

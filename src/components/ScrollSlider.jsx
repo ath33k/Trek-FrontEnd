@@ -1,9 +1,10 @@
 /* eslint-disable react/prop-types */
 
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
+import noimage from "../assets/imageback.jpg";
 
 export default function ScrollSlider({
-  images,
+  images = [{ src: noimage }, { src: noimage }],
   title = "Carousel",
   hClass = "h-72",
   emptymessage = "No images available",
