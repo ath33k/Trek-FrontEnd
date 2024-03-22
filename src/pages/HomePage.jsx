@@ -122,7 +122,7 @@ export default function HomePage() {
           lgImgHeight={"lg:h-[540px]"}
           xlImgHeight={"xl:h-[620px]"}
         ></HeaderImageCarousel>
-        <div className="absolute top-[50%] left-[50%] text-white z-[100] translate-y-[-50%]  translate-x-[-50%] text-center">
+        <div className="absolute top-[50%] left-[50%] text-white z-50 translate-y-[-50%]  translate-x-[-50%] text-center">
           <h1 className="font-semibold  text-sm sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">
             UNLEASH YOUR WANDERLUST. WE&apos;LL FIND YOUR PERFECT SPOT
           </h1>

@@ -65,7 +65,7 @@ export const NavBar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 justify-between w-full z-50 text-black  bg-white ${
+      className={`fixed top-0 left-0 justify-between w-full z-[80] text-black  bg-white ${
         isScrolled ? "border-gray-200 border-b-2" : ""
       }`}
     >
