@@ -1,8 +1,6 @@
 import Container from "../components/Container";
 import ExpandableText from "../components/ExpandableText";
 import HeaderImageCarousel from "../components/HeaderImageCarousel";
-import sigiriya from "../assets/sigiriya.png";
-import ninearch from "../assets/yves-alarie-3R50kTNBKiE-unsplash.jpg";
 
 import Chip from "../components/Chip";
 import { FaMapMarkerAlt } from "react-icons/fa";
