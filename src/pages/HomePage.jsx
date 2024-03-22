@@ -1,18 +1,7 @@
-import React, { useState } from "react";
 import { NavBar } from "../components/NavBar";
 import HeaderImageCarousel from "../components/HeaderImageCarousel";
 
-import MtLavniaBeach from "../assets/beach-view.jpg";
-
-import AnuradhapuraTemple from "../assets/chathura-anuradha-subasinghe-isdvqf04MDk-unsplash.jpg";
-import JungleBeach from "../assets/Jungle-Beach-Bay-Drone-Shot-1536x1152.jpg";
-
-import NineArch from "../assets/yves-alarie-3R50kTNBKiE-unsplash.jpg";
-
-import Sunset from "../assets/sunsetAtElla.jpeg";
-
 import Container from "../components/Container";
-import MySlider from "../components/MySlider";
 import Chip from "../components/Chip";
 import FixedIcon from "../components/FixedIcon";
 import { MdAutoAwesome } from "react-icons/md";
@@ -21,6 +10,7 @@ import { MdOutlineExplore } from "react-icons/md";
 import { ImConfused } from "react-icons/im";
 import { Link as LinkScroll } from "react-scroll";
 import CategoryList from "../components/CategoryList";
+import { useState } from "react";
 
 const imageList = [
   {

@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+/* eslint-disable react/prop-types */
+import { useEffect, useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoCloseOutline } from "react-icons/io5";
 import { NavLink } from "react-router-dom";
@@ -65,15 +66,9 @@ export const NavBar = () => {
 
   return (
     <nav
-<<<<<<< HEAD
-      className={`fixed top-0 left-0 justify-between w-full z-50 text-black  bg-white ${
-        isScrolled ? "border-gray-200 border-b-2" : ""
-      }  `}
-=======
       className={`fixed top-0 left-0 justify-between w-full z-[80] text-black  bg-white ${
         isScrolled ? "border-gray-200 border-b-2" : ""
       }`}
->>>>>>> origin/homepage-in-work
     >
       <div className="flex items-center p-2 mx-4 sm:mx-8 md:mx-14 lg:mx-32">
         <div className="flex items-center justify-between  w-auto md:w-[100%]">
