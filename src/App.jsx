@@ -12,6 +12,7 @@ import ErrorScreen from "./components/Errors/ErrorScreen";
 import { navlinks } from "./navlinks";
 import HomePage from "./pages/HomePage";
 import Testbotpage from "./pages/Testbotpage";
+import ResultsPage from "./pages/ResultsPage";
 
 const AddDestination = lazy(() => import("./pages/AddDestination"));
 
@@ -27,6 +28,7 @@ export default function App() {
                 path={navlinks.fdpage.path}
                 element={<FDetialPage destinationID={"8onQvGuAicMdvL77ikOi"} />}
               />
+              <Route path={navlinks.results.path} element={<ResultsPage />} />
               <Route path={navlinks.home.path} element={<HomePage />} />
               <Route path="/testprompt" element={<Testbotpage />} />
               <Route path={navlinks.map.path} element={<MapViewPage />} />

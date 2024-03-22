@@ -19,4 +19,8 @@ export const navlinks = {
     name: "More Details",
     path: "/spot/:id",
   },
+  results: {
+    name: "Results",
+    path: "/results",
+  },
 };
