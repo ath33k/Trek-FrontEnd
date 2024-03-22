@@ -30,7 +30,7 @@ export default function FDetialPage() {
     if (value) {
       setCarouselImages(undefined);
       value.desktopImages.forEach((img, index) => {
-        getimageURL(index, "/destinations/" + params.id + "/desktop/").then(
+        getimageURL(index, "/destinations/" + params.id + "/mobile/").then(
           (imginfo) => {
             setCarouselImages((prev) => {
               return [...(prev || []), imginfo];

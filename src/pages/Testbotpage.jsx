@@ -1,18 +1,21 @@
-export default function Testbotpage() {
-  const handletextSubmit = async () => {
-    //  e.preventDefault();
-    const prompt = { sentence: "elephants" };
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-    fetch("http://15.206.164.245/generate_tags", {
+export default function Testbotpage() {
+  const navigate = useNavigate();
+  const [prompt, setPrompt] = useState("");
+  const handletextSubmit = async () => {
+    fetch("http://43.204.230.225/generate_tags", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(prompt),
+      body: JSON.stringify({ sentence: prompt }),
     })
       .then((response) => {
-        response.json().then((data) => {
-          console.log(data);
+        response.json().then((spots) => {
+          console.log(spots);
+          navigate("/spot/" + spots[0].id);
         });
       })
       .catch((error) => {
@@ -22,7 +25,14 @@ export default function Testbotpage() {
   return (
     <div>
       <h1>Testbotpage</h1>
-      <input type="text" placeholder="Enter prompt" />
+      <input
+        type="text"
+        placeholder="Enter prompt"
+        onChange={(e) => {
+          setPrompt(e.target.value);
+        }}
+        value={prompt}
+      />
       <button
         onClick={() => {
           handletextSubmit(() => {});
