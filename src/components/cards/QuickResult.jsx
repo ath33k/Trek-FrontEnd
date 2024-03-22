@@ -18,7 +18,7 @@ export default function QuickResult({ value }) {
   };
   return (
     <div
-      className="max-w-[500px] w-screen mx-auto bg-black  h-screen min-h-[500px] relative"
+      className="max-w-[500px] w-screen mx-auto bg-black  h-screen min-h-[300px] relative"
       style={{
         backgroundImage: `url(${image.src})`,
         backgroundSize: "cover",
