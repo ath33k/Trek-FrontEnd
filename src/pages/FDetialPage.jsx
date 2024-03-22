@@ -18,14 +18,6 @@ import { db } from "../config/firebase";
 import { useEffect, useState } from "react";
 import { getimageURL } from "../firefunctions";
 
-const images = [
-  { src: sigiriya },
-  { src: ninearch },
-  { src: sigiriya },
-  { src: sigiriya },
-  { src: sigiriya },
-];
-
 const commentsData = [
   {
     id: 1,

@@ -1,9 +1,9 @@
 export default function Testbotpage() {
-  const handletextSubmit = async (e) => {
-    e.preventDefault();
-    const prompt = { sentence: "I want to visit beaches" };
+  const handletextSubmit = async () => {
+    //  e.preventDefault();
+    const prompt = { sentence: "elephants" };
 
-    fetch("http://65.0.75.52/generate_tags", {
+    fetch("http://15.206.164.245/generate_tags", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -11,17 +11,25 @@ export default function Testbotpage() {
       body: JSON.stringify(prompt),
     })
       .then((response) => {
-        console.log(response);
+        response.json().then((data) => {
+          console.log(data);
+        });
       })
       .catch((error) => {
         console.error("Error:", error);
       });
   };
   return (
-    <form onSubmit={handletextSubmit}>
+    <div>
       <h1>Testbotpage</h1>
       <input type="text" placeholder="Enter prompt" />
-      <button type="submit">Submit</button>
-    </form>
+      <button
+        onClick={() => {
+          handletextSubmit(() => {});
+        }}
+      >
+        Submit
+      </button>
+    </div>
   );
 }

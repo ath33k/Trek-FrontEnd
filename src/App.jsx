@@ -15,6 +15,9 @@ import ErrorScreen from "./components/Errors/ErrorScreen";
 import { navlinks } from "./navlinks";
 import HomePage from "./pages/HomePage";
 import Testbotpage from "./pages/Testbotpage";
+import Newviewcard from "./components/NewViewCard";
+
+import sigiriya from "./assets/sigiriya.png";
 
 const AddDestination = lazy(() => import("./pages/AddDestination"));
 
@@ -44,7 +47,19 @@ export default function App() {
             <Route element={<AuthRoute />}>
               <Route path={navlinks.home.path} element={<FDetialPage />} />
               <Route path="/hometest" element={<HomePage />} />
-              <Route path="/testprompt" element={<Testbotpage />} />
+              <Route
+                path="/testprompt"
+                element={
+                  <Newviewcard
+                    description={"sfsbfb rsjbwgkbnw btwjbtb j"}
+                    title="Sigiriya"
+                    backgroundImage={sigiriya}
+                    height={"100vh"}
+                    distance={"24"}
+                    rating={"4"}
+                  />
+                }
+              />
               <Route path={navlinks.map.path} element={<MapViewPage />} />
               <Route path={navlinks.add.path} element={<AddDestination />} />
             </Route>
