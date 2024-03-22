@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavBar } from "../components/NavBar";
 import HeaderImageCarousel from "../components/HeaderImageCarousel";
 
@@ -41,30 +41,74 @@ export default function HomePage() {
   const imageForSlider = [
     {
       id: 1,
-      image: Sunset,
+      image:
+        "https://s3.ap-southeast-1.amazonaws.com/localiiz-prod/uploads/_1000x1000_fit_center-center_80_none/Best-hilly-getaways-in-Sri-Lanka-Ella-Rock-Sri-Lanka-Facebook.jpg?mtime=20200911184348&focal=none&tmtime=20210606140507",
       alt: "Sunset",
+      tags: ["Family"],
     },
     {
       id: 2,
-      image: MtLavniaBeach,
+      image:
+        "https://th.bing.com/th/id/R.8b3955009d6d441a7d4c0746ff47eff1?rik=iYio9tResrwULA&riu=http%3a%2f%2fwww.beach-on-map.com%2fimg%2f7%2fsri-lanka-mount-lavinia-beach-hotel-aerial-orig.jpg&ehk=uhDs4KKNKmFXY01Yaf9m%2fCVIzFPKR22FrYbL3bgniMs%3d&risl=&pid=ImgRaw&r=0",
       alt: "mount lavinia Beach",
+      tags: ["Adventure", "Recommendation"],
     },
     {
       id: 3,
-      image: AnuradhapuraTemple,
-      alt: "Anuradhapura temple",
+      image:
+        "https://arenatours.com/wp-content/uploads/2018/07/rafting-sri-lanka-3.jpg",
+      alt: "Rafting",
+      tags: ["Adventure"],
     },
+
     {
       id: 4,
-      image: JungleBeach,
+      image:
+        "https://th.bing.com/th/id/R.310ce2cd59ab7bd7bbe4fc8f6236a0d5?rik=I4482ueeTIZI1A&pid=ImgRaw&r=0",
       alt: "Jungle beach unawatuna",
+      tags: ["Adventure", "Recommendation"],
     },
     {
       id: 5,
-      image: NineArch,
+      image:
+        "https://th.bing.com/th/id/OIP.w4CmKSR9SKjldERInZpkcwHaE8?rs=1&pid=ImgDetMain",
       alt: "Nine arch bridge",
+      tags: ["Family", "Adventure", "Recommendation"],
+    },
+
+    {
+      id: 6,
+      image:
+        "https://th.bing.com/th/id/R.c6235b4c7b695d1e828e8723f7ebdcaf?rik=HPtP%2bCyFi4wsDw&riu=http%3a%2f%2fsrilankaecotourism.lk%2flocation_img%2f1489661273meemure_1.jpg&ehk=hXpq6M1Jaie5TMWE4R7M9g9RUZ%2bldLPkiFiS5zHCUto%3d&risl=&pid=ImgRaw&r=0",
+      alt: "Meemure",
+      tags: ["Family", "Adventure", "Recommendation"],
+    },
+    {
+      id: 7,
+      image:
+        "https://th.bing.com/th/id/R.12f3006566205e9eda791a147c0dfd71?rik=1RWIcPep7vsR%2bw&riu=http%3a%2f%2flankavisit.com%2fwp-content%2fuploads%2f2019%2f07%2fAnuradhapura_logo-1.jpg&ehk=Mnhjhn2Q69t22cvkLY%2bZdRTxp62rEo%2fOqU7K6Upo55Q%3d&risl=&pid=ImgRaw&r=0",
+      alt: "Anuradhapura temple",
+      tags: ["Family", "Recommendation"],
     },
   ];
+
+  const [selectedCategory, setSelectedCategory] = useState("Recommendation");
+
+  const categorySliders = imageForSlider
+    .map((img) => img)
+    .filter((img) => img.tags.includes(selectedCategory));
+
+  // const familyCategory = imageForSlider
+  //   .map((img) => img)
+  //   .filter((img) => img.tags.includes("Family"));
+
+  // const adventureCategory = imageForSlider
+  //   .map((img) => img)
+  //   .filter((img) => img.tags.includes("Adventure"));
+
+  function handleCategorySelection(e) {
+    setSelectedCategory(() => e.target.id);
+  }
 
   return (
     <div className="my-14 mx-4 sm:mx-8 md:mx-14 md:my-16 lg:mx-28">
@@ -152,17 +196,75 @@ export default function HomePage() {
           </div>
         </Container>
       </Container>
-      <Container className={" p-16 my-24 md:p-24 lg:p-28 "}>
+      <Container className={" p-16 my-16 md:p-24 lg:p-28 "}>
         <h2 className=" text-2xl md:text-2xl xl:text-3xl text-center font-bold">
           {/* UNLEASH YOUR WANDERLUST. WE'LL FIND YOUR PERFECT SPOT */}
           &rdquo;THE GREATEST JOURNEY BEGINS WITH A SINGLE STEP&ldquo;
         </h2>
         <p className="mt-2 text-xl text-center italic">~ Lao Tzu</p>
       </Container>
-      <Container className={"mt-10 "}>
-        <h2 className="text-lg my-2 mx-1 xl:mx-2 2xl:mx-4">Recommendations</h2>
-        <MySlider slides={imageForSlider} />
-      </Container>
+
+      {/* Sliders */}
+      <div className="flex gap-2 justify-center text-xs ">
+        <button
+          id="Recommendation"
+          className={`transition-all duration-300 p-1 border-2 rounded-md ${
+            selectedCategory == "Recommendation"
+              ? " bg-black text-white"
+              : "hover:bg-gray-300"
+          } `}
+          onClick={handleCategorySelection}
+        >
+          Recommendation
+        </button>
+        <button
+          id="Family"
+          className={`transition-all duration-300 p-1 border-2 rounded-md ${
+            selectedCategory == "Family"
+              ? " bg-black text-white"
+              : "hover:bg-gray-300"
+          } `}
+          onClick={handleCategorySelection}
+        >
+          Family
+        </button>
+        <button
+          id="Adventure"
+          className={`transition-all duration-300 p-1 border-2 rounded-md ${
+            selectedCategory == "Adventure"
+              ? " bg-black text-white"
+              : "hover:bg-gray-300"
+          } `}
+          onClick={handleCategorySelection}
+        >
+          Adventure
+        </button>
+        <div></div>
+      </div>
+
+      {categorySliders && (
+        <Container className={"mt-4 "}>
+          <h2 className="lg:text-lg  my-2 mx-1 xl:mx-2 2xl:mx-4">
+            {selectedCategory}
+            {console.log(categorySliders)}
+          </h2>
+          <MySlider slides={categorySliders} />
+        </Container>
+      )}
+      {/* 
+      {familyCategory && (
+        <Container className={"mt-10 "}>
+          <h2 className="text-lg my-2 mx-1 xl:mx-2 2xl:mx-4">Family</h2>
+          <MySlider slides={familyCategory} />
+        </Container>
+      )}
+
+      {adventureCategory && (
+        <Container className={"mt-10 "}>
+          <h2 className="text-lg my-2 mx-1 xl:mx-2 2xl:mx-4">Adventure</h2>
+          <MySlider slides={adventureCategory} />
+        </Container>
+      )} */}
     </div>
   );
 }
