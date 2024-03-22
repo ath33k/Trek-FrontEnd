@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import Container from "../components/Container";
 import ExpandableText from "../components/ExpandableText";
 import HeaderImageCarousel from "../components/HeaderImageCarousel";
@@ -15,51 +16,21 @@ import { doc } from "firebase/firestore";
 import { db } from "../config/firebase";
 import { useEffect, useState } from "react";
 import { getimageURL } from "../firefunctions";
-
-const commentsData = [
-  {
-    id: 1,
-    user: "John Doe",
-    date: "February 15, 2024",
-    text: "Visiting Sigiriya was an extraordinary experience! The view from the top is breathtaking, and the history behind the site is fascinating. Make sure to bring water and wear comfortable shoes, as there are quite a few steps to climb. It's best to go early in the morning to avoid the heat and the crowds.",
-    rating: 5,
-    helpfulCount: 256,
-    image: "path/to/sigiriya_image.jpg", // Replace with the path to your image
-  },
-  {
-    id: 2,
-    user: "Emma Wilson",
-    date: "February 20, 2024",
-    text: "Truly a marvel of ancient engineering and art. The frescoes and the Lion's Gate are highlights not to be missed. However, be prepared for the monkeys - they are everywhere and can be quite cheeky!",
-    rating: 4,
-    helpfulCount: 102,
-    image: "path/to/sigiriya_image.jpg",
-  },
-  {
-    id: 2,
-    user: "Bhanu Wilson",
-    date: "February 20, 2024",
-    text: "Truly a marvel of ancient engineering and art. The frescoes and the Lion's Gate are highlights not to be missed. However, be prepared for the monkeys - they are everywhere and can be quite cheeky!",
-    rating: 4,
-    helpfulCount: 102,
-    image: "path/to/sigiriya_image.jpg",
-  },
-];
-
-const ratingPresentages = { 4: 25, 5: 80, 3: 3, 2: 1, 1: 1 };
+import { useParams } from "react-router-dom";
 
 export default function FDetialPage() {
-  const destinationID = "8onQvGuAicMdvL77ikOi"; // Replace with your destination ID from prop
+  const params = useParams();
+
   const [carouselImages, setCarouselImages] = useState(undefined);
   const [value, loading, error] = useDocumentDataOnce(
-    doc(db, "destinations", destinationID)
+    doc(db, "destinations", params.id)
   );
 
   useEffect(() => {
     if (value) {
       setCarouselImages(undefined);
       value.desktopImages.forEach((img, index) => {
-        getimageURL(index, "/destinations/" + destinationID + "/desktop/").then(
+        getimageURL(index, "/destinations/" + params.id + "/desktop/").then(
           (imginfo) => {
             setCarouselImages((prev) => {
               return [...(prev || []), imginfo];
@@ -68,7 +39,7 @@ export default function FDetialPage() {
         );
       });
     }
-  }, [value]);
+  }, [params.id, value]);
 
   if (loading) {
     return <LoadingScreen />;
@@ -107,12 +78,12 @@ export default function FDetialPage() {
         <div className="mb-10 ml-3 mr-3">
           <div>
             <RatingComponent
-              totalRating={3}
-              reviewsCount={100}
-              ratings={ratingPresentages}
+              totalRating={value.totalRating}
+              reviewsCount={value.reviewsCount}
+              ratings={value.ratings}
             />
           </div>
-          <CommentSection2 commentsData={commentsData} />
+          <CommentSection2 commentsData={value.comments} />
         </div>
       </div>
     </Container>

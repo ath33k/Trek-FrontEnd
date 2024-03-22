@@ -15,4 +15,8 @@ export const navlinks = {
     name: "Map",
     path: "/map",
   },
+  fdpage: {
+    name: "More Details",
+    path: "/spot/:id",
+  },
 };

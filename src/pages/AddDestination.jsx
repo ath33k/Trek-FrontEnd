@@ -108,6 +108,7 @@ export default function AddDestination() {
         <div
           className=" relative cursor-pointer flex gap-3 items-center border px-4 py-2 "
           onClick={() => setShowDestinations(!showDestinations)}
+          onBlur={() => setShowDestinations(false)}
         >
           <p className="text-lg font-semibold text-red-600">
             {desdata.length > 0
@@ -125,14 +126,11 @@ export default function AddDestination() {
               style={{
                 scrollbarWidth: "thin",
               }}
-              className="absolute top-14 left-0 w-full bg-white dark:bg-gray-800 border max-h-96 overflow-scroll border-gray-300 dark:border-gray-600 rounded-lg shadow-lg"
+              className="absolute top-14 left-0 w-full bg-white border max-h-96 overflow-scroll border-gray-300 rounded-lg shadow-lg"
             >
               <ul className="flex flex-col gap-2 p-2">
                 {desdata.map((dest, index) => (
-                  <li
-                    key={index}
-                    className="hover:bg-gray-100 dark:hover:bg-gray-700 p-2 rounded-lg"
-                  >
+                  <li key={index} className="hover:bg-gray-100  p-2 rounded-lg">
                     {dest.name}-{dest.city}
                   </li>
                 ))}
