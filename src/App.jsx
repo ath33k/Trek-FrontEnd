@@ -9,21 +9,24 @@ import { ErrorBoundary } from "./components/Errors/ErrorBoundary";
 import ErrorScreen from "./components/Errors/ErrorScreen";
 import FAB from "./components/FAB";
 import LoadingScreen from "./components/Loading/LoadingScreen";
+import NewCard from "./components/NewCard";
 import Newviewcart from "./components/Newviewcart";
-import AuthRoute from "./components/Routes/AuthRoute";
-import AuthPage from "./pages/AuthPage";
-import HomePage from "./pages/HomePage";
-import { navlinks } from "./navlinks";
+// import AuthRoute from "./components/Routes/AuthRoute";
+// import AuthPage from "./pages/AuthPage";
+// // const FDetialPage = lazy(() => import("./pages/FDetialPage"));
+// import HomePage from "./pages/HomePage";
+import download from "./assets/Gartmore falls srilanka.jpeg";
 
-// const FDetialPage = lazy(() => import("./pages/FDetialPage"));
+// import { navlinks } from "./navlinks";
 // const MapViewPage = lazy(() => import("./pages/MapViewPage"));
 // const AddDestination = lazy(() => import("./pages/AddDestination"));
 export default function App() {
+
   // const navigator = useNavigate();
   // document.title = window.location.pathname.replaceAll("/", "") || "Home";
   return (
-    <>
-    <Container><Newviewcart title={"Sigiriya"} backgroundImage={"vite.svg"} width={"430px"} height={"932px"} description={"loarcgfhghgjhghcghhjvhgvhgvhvhghvbvbvvbvbv bv bv vb vb  v v v v cv v v v cv vc v cv"} rating={7.5} distance={20}/></Container>
+    <><NewCard title="Sigiriya" backgroundImage="/src/download.jpg" description="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde labore voluptatum saepe aperiam sint ab asperiores dolore eligendi dolorem dicta? Accusantium rerum quod, eius aperiam quasi illum corporis facilis et." rating="7.5" distance="20"/>
+    {/* <Container><Newviewcart title="Sigiriya" backgroundImage="/src/download.jpg" description="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde labore voluptatum saepe aperiam sint ab asperiores dolore eligendi dolorem dicta? Accusantium rerum quod, eius aperiam quasi illum corporis facilis et." rating="7.5" distance="20"/></Container> */}
       {/* {window.location.pathname !== "/" && (
         <FAB
           onClick={() => {
