@@ -1,17 +1,20 @@
-import axios from "axios";
 export default function Testbotpage() {
   const handletextSubmit = async (e) => {
     e.preventDefault();
     const prompt = { sentence: "I want to visit beaches" };
 
-    axios
-      .post("http://65.0.75.52/generate_tags", prompt, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
+    fetch("http://65.0.75.52/generate_tags", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(prompt),
+    })
       .then((response) => {
         console.log(response);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
       });
   };
   return (
