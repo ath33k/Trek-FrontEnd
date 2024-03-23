@@ -7,31 +7,10 @@ export default function MapDetails({
   direction,
   setDirection,
   destination,
+  fetchDirections,
+  distance,
 }) {
-  const [distance, setDistance] = useState("");
   const originRef = useRef();
-
-  useEffect(
-    function () {
-      fetchDirections(marker);
-    },
-
-    [marker]
-  );
-
-  async function fetchDirections(marker) {
-    if (!marker) return;
-
-    const service = new window.google.maps.DirectionsService();
-    const result = await service.route({
-      origin: marker,
-      destination: destination,
-      travelMode: window.google.maps.TravelMode.DRIVING,
-    });
-
-    setDirection(result);
-    setDistance(result.routes[0].legs[0].distance.text);
-  }
 
   function convertLocationAddress(location, setLatLng) {
     const geocoder = new window.google.maps.Geocoder();
@@ -59,11 +38,11 @@ export default function MapDetails({
   }
 
   return (
-    <div className=" w-2/5 bg-black text-white p-8 md:p-12">
+    <div className=" w-full md:w-2/5 bg-black text-white p-8 md:p-12">
       <h1 className="text-2xl font-bold">CONTROLLER</h1>
       <h2>Tap on the map Select your current location or enter below</h2>
 
-      <div className="flex flex-wrap mb-5 md:mb-2 md:gap-5 md:items-center ">
+      <div className="flex gap-5 flex-wrap items-center mb-5 md:mb-2 md:gap-2  ">
         <Autocomplete>
           <input
             type="text"
