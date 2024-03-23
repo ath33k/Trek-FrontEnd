@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { getimageURL } from "../../firefunctions";
 import { MdOutlineUnfoldMore } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
-
+import { BiExpandAlt } from "react-icons/bi";
 /* eslint-disable react/prop-types */
 export default function QuickResult({ value }) {
   const [image, setImages] = useState("");
@@ -37,10 +37,10 @@ export default function QuickResult({ value }) {
           </li> */}
           <li>
             <button
-              className="bg-gray-200/40 transition-colors duration-150 hover:bg-gray-300/80 p-2 backdrop-blur-sm rounded-full"
+              className="bg-gray-200/60 transition-colors duration-150 hover:bg-gray-300/80 p-2 backdrop-blur-sm rounded-full shadow-lg"
               onClick={handleShowMore}
             >
-              <MdOutlineUnfoldMore className="text-white text-2xl" />
+              <BiExpandAlt className="text-white text-2xl" />
             </button>
           </li>
         </ul>

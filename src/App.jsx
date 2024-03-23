@@ -28,7 +28,27 @@ export default function App() {
                 path={navlinks.fdpage.path}
                 element={<FDetialPage destinationID={"8onQvGuAicMdvL77ikOi"} />}
               />
-              <Route path={navlinks.results.path} element={<ResultsPage />} />
+              <Route
+                path={navlinks.results.path}
+                element={
+                  <ResultsPage
+                    results={[
+                      {
+                        name: "Polonnaruwa Vatadageya",
+                        id: "8onQvGuAicMdvL77ikOi",
+                        description:
+                          "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Error natus dicta corrupti incidunt, totam laboriosam quibusdam sit, provident ullam fuga nobis ea necessitatibus ad molestiae atque! Veritatis voluptas soluta cumque!",
+                      },
+                      {
+                        name: "Galle",
+                        id: "HeRima8M7SPZaXowWuat",
+                        description:
+                          "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Error natus dicta corrupti incidunt, totam laboriosam quibusdam sit, provident ullam fuga nobis ea necessitatibus ad molestiae atque! Veritatis voluptas soluta cumque!",
+                      },
+                    ]}
+                  />
+                }
+              />
               <Route path={navlinks.home.path} element={<HomePage />} />
               <Route path="/testprompt" element={<Testbotpage />} />
               <Route path={navlinks.map.path} element={<MapViewPage />} />
