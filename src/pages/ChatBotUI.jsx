@@ -28,7 +28,7 @@ const ChatBotUI = () => {
       return;
     }
 
-    fetch("http://3.7.65.157/generate_tags", {
+    fetch("http://3.108.238.53/generate_tags", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -53,6 +53,7 @@ const ChatBotUI = () => {
           }, 2000);
         });
     });
+    setIsLoading(false);
   };
 
   const handleInputChange = (e) => {
