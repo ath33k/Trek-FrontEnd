@@ -67,14 +67,13 @@ const ChatBotUI = () => {
   };
 
   return (
-    <form
+    <div
       className="flex flex-col items-center justify-center h-screen w-screen px-1"
       style={{
         backgroundImage: `url(${"/wallpaper1.webp"})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
-      //  onSubmit={handleSubmit}
     >
       <div className="px-2 pt-2 pb-8 bg-white bg-opacity-80 rounded-lg shadow-lg mb-4 w-full max-w-[500px]">
         <span className=" flex items-center gap-2 mb-2">
@@ -97,7 +96,6 @@ const ChatBotUI = () => {
             disabled={isLoading}
             className=" p-0 w-10 h-10 relative min-w-0 min-h-0 text-xl rounded-full bg-[#46B0A9] text-white"
             onClick={handleSubmit}
-            type="submit"
           >
             {isLoading ? (
               <div className="absolute inset-0 flex items-center justify-center -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
@@ -144,7 +142,7 @@ const ChatBotUI = () => {
           </p>
         </div>
       </div>
-    </form>
+    </div>
   );
 };
 
