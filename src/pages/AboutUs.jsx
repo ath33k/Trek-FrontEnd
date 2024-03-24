@@ -3,11 +3,12 @@ import Container from "../components/Container.jsx";
 import { NavBar } from "../components/NavBar.jsx";
 import atheekImg from "../assets/teamImages/atheekImg.jpeg";
 import saarahImg from "../assets/teamImages/saarahImg.jpg";
+import duvinImg from "../assets/teamImages/duvinImg.jpg";
 
 export default function AboutUs() {
   const imageArr = [
     { id: 1, name: "Banuka Dassanayake", src: saarahImg },
-    { id: 2, name: "Duvin Kularatne", src: saarahImg },
+    { id: 2, name: "Duvin Kularatne", src: duvinImg },
     { id: 3, name: "Atheek Naheem", src: atheekImg },
     { id: 4, name: "Lakshan Liyanage", src: saarahImg },
     { id: 5, name: "Saarah Insar", src: saarahImg },
