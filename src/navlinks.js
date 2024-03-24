@@ -27,4 +27,8 @@ export const navlinks = {
     name: "Results",
     path: "/results",
   },
+  prompt: {
+    name: "Prompt",
+    path: "/prompt",
+  },
 };

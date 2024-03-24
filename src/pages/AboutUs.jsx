@@ -77,7 +77,7 @@ function ImageCards({ name, image }) {
       <img
         src={image}
         alt=""
-        className="w-[150px] h-[200px] lg:w-[180px] lg:h-[225px] "
+        className="w-[150px] h-[200px] lg:w-[180px] lg:h-[225px] object-cover object-center"
       />
     </div>
   );

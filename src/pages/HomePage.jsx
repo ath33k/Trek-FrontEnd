@@ -3,7 +3,7 @@ import HeaderImageCarousel from "../components/HeaderImageCarousel";
 
 import Container from "../components/Container";
 import Chip from "../components/Chip";
-import FixedIcon from "../components/FixedIcon";
+import BotButton from "../components/FixedIcon";
 import { MdAutoAwesome } from "react-icons/md";
 import { FaSearch } from "react-icons/fa";
 import { MdOutlineExplore } from "react-icons/md";
@@ -100,7 +100,7 @@ export default function HomePage() {
 
   return (
     <div className="my-14 mx-4 sm:mx-8 md:mx-14 md:my-16 lg:mx-28">
-      <FixedIcon />
+      <BotButton />
       <NavBar />
       <div className="relative ">
         <div className=" bg-gradient-to-b from-black absolute h-[100%] w-[100%] top-0 left-0 opacity-80 z-10 "></div>

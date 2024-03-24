@@ -52,7 +52,7 @@ export default function App() {
                 }
               />
               <Route path={navlinks.home.path} element={<HomePage />} />
-              <Route path="/prompt" element={<ChatBotUI />} />
+              <Route path={navlinks.prompt.path} element={<ChatBotUI />} />
               <Route path={navlinks.about.path} element={<AboutUs />} />
               <Route path={navlinks.map.path} element={<MapViewPage />} />
               <Route path={navlinks.add.path} element={<AddDestination />} />

@@ -22,7 +22,9 @@ const ChatBotUI = () => {
     setIsLoading(true);
 
     if (wcount < 3 || wcount > maxWordCount) {
-      setIsLoading(false);
+      setInterval(() => {
+        setIsLoading(false);
+      }, 1000);
       return;
     }
 
@@ -67,7 +69,7 @@ const ChatBotUI = () => {
     <form
       className="flex flex-col items-center justify-center h-screen w-screen px-1"
       style={{
-        backgroundImage: `url(${"src/assets/wallpaper1.webp"})`,
+        backgroundImage: `url(${"/wallpaper1.webp"})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
