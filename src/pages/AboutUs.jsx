@@ -1,4 +1,5 @@
-import React from "react";
+/* eslint-disable react/prop-types */
+
 import Container from "../components/Container.jsx";
 import { NavBar } from "../components/NavBar.jsx";
 import atheekImg from "../assets/teamImages/atheekImg.jpeg";

@@ -6,6 +6,7 @@ import { NavLink } from "react-router-dom";
 import { Logo } from "./Logo";
 import Chip from "../components/Chip.jsx";
 import { FaSearch } from "react-icons/fa";
+import { navlinks } from "../navlinks.js";
 
 export const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -56,7 +57,7 @@ export const NavBar = () => {
     },
     {
       name: "About us",
-      path: "/",
+      path: navlinks.about.path,
     },
     {
       name: "Favorites",
