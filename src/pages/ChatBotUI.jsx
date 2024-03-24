@@ -17,8 +17,8 @@ const ChatBotUI = () => {
 
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = () => {
+    //e.preventDefault();
     setIsLoading(true);
 
     if (wcount < 3 || wcount > maxWordCount) {
@@ -73,7 +73,7 @@ const ChatBotUI = () => {
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
-      onSubmit={handleSubmit}
+      //  onSubmit={handleSubmit}
     >
       <div className="px-2 pt-2 pb-8 bg-white bg-opacity-80 rounded-lg shadow-lg mb-4 w-full max-w-[500px]">
         <span className=" flex items-center gap-2 mb-2">
@@ -95,7 +95,7 @@ const ChatBotUI = () => {
           <button
             disabled={isLoading}
             className=" p-0 w-10 h-10 relative min-w-0 min-h-0 text-xl rounded-full bg-[#46B0A9] text-white"
-            //onClick={handleSubmit}
+            onClick={handleSubmit}
             type="submit"
           >
             {isLoading ? (

@@ -26,7 +26,6 @@ export default function CategoryList({
         <Container className={"mt-4 mx-8 "}>
           <h2 className="lg:text-lg  my-2 mx-1 xl:mx-2 2xl:mx-4">
             {selectedCategory}
-            {console.log(categorySliders)}
           </h2>
           <MySlider slides={categorySliders} />
         </Container>
