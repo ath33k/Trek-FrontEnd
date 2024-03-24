@@ -3,7 +3,7 @@ import HeaderImageCarousel from "../components/HeaderImageCarousel";
 
 import Container from "../components/Container";
 import Chip from "../components/Chip";
-import BotButton from "../components/FixedIcon";
+import BotButton from "../components/BotButton";
 import { MdAutoAwesome } from "react-icons/md";
 import { FaSearch } from "react-icons/fa";
 import { MdOutlineExplore } from "react-icons/md";
