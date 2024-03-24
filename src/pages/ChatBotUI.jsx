@@ -4,6 +4,8 @@ import treklogo from "../assets/treklogo.svg";
 import { IoIosSend } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import { navlinks } from "../navlinks";
+import { collectUserPrompts } from "../firefunctions";
+import { db } from "../config/firebase";
 
 const ChatBotUI = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -20,8 +22,10 @@ const ChatBotUI = () => {
     setIsLoading(true);
 
     if (wcount < 3 || wcount > maxWordCount) {
+      setIsLoading(false);
       return;
     }
+
     fetch("http://3.7.65.157/generate_tags", {
       method: "POST",
       headers: {
@@ -32,6 +36,11 @@ const ChatBotUI = () => {
       response
         .json()
         .then((spots) => {
+          const spnames = spots.map((spot) => spot.name);
+          collectUserPrompts(db, {
+            sentence: inputValue,
+            suggestions: spnames,
+          });
           navigate(navlinks.results.path, { state: { results: spots } });
           setIsLoading(false);
         })
