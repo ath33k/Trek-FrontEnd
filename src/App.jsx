@@ -13,8 +13,10 @@ import { navlinks } from "./navlinks";
 import HomePage from "./pages/HomePage";
 import Testbotpage from "./pages/Testbotpage";
 import ResultsPage from "./pages/ResultsPage";
+import AboutUs from "./pages/AboutUs";
 import MapViewCard from "./components/MapViewCard";
 import MapTestPage from "./pages/MapTestPage";
+
 
 const AddDestination = lazy(() => import("./pages/AddDestination"));
 
@@ -52,6 +54,7 @@ export default function App() {
                 }
               />
               <Route path={navlinks.home.path} element={<HomePage />} />
+              <Route path={navlinks.about.path} element={<AboutUs />} />
               <Route path="/testprompt" element={<Testbotpage />} />
               <Route path={navlinks.map.path} element={<MapViewPage />} />
               <Route path={navlinks.add.path} element={<AddDestination />} />
