@@ -11,8 +11,9 @@ import AuthRoute from "./components/Routes/AuthRoute";
 import ErrorScreen from "./components/Errors/ErrorScreen";
 import { navlinks } from "./navlinks";
 import HomePage from "./pages/HomePage";
-import Testbotpage from "./pages/Testbotpage";
+import ChatBotUI from "./pages/ChatBotUI";
 import ResultsPage from "./pages/ResultsPage";
+import Testbotpage from "./pages/Testbotpage";
 
 const AddDestination = lazy(() => import("./pages/AddDestination"));
 
@@ -50,7 +51,7 @@ export default function App() {
                 }
               />
               <Route path={navlinks.home.path} element={<HomePage />} />
-              <Route path="/testprompt" element={<Testbotpage />} />
+              <Route path="/prompt" element={<ChatBotUI />} />
               <Route path={navlinks.map.path} element={<MapViewPage />} />
               <Route path={navlinks.add.path} element={<AddDestination />} />
             </Route>

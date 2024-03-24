@@ -5,7 +5,7 @@ export default function Testbotpage() {
   const navigate = useNavigate();
   const [prompt, setPrompt] = useState("");
   const handletextSubmit = async () => {
-    fetch("http://43.204.230.225/generate_tags", {
+    fetch("http://3.7.65.157/generate_tags", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
