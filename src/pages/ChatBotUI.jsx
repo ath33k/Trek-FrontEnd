@@ -27,7 +27,7 @@ const ChatBotUI = () => {
       return;
     }
 
-    fetch("https://3.108.238.53/generate_tags", {
+    fetch("http://3.108.238.53/generate_tags", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
