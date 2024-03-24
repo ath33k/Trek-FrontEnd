@@ -1,6 +1,5 @@
 import { useState } from "react";
-import Container from "../components/Container";
-import { FaCamera, FaCheck } from "react-icons/fa";
+
 import treklogo from "../assets/treklogo.svg";
 import { IoIosSend } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
@@ -11,7 +10,7 @@ const ChatBotUI = () => {
   const [inputValue, setInputValue] = useState("");
   const [wcount, setWCount] = useState(0);
 
-  const maxWordCount = 5;
+  const maxWordCount = 500;
   const minWordCount = 3;
 
   const navigate = useNavigate();

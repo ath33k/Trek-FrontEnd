@@ -13,7 +13,8 @@ import { navlinks } from "./navlinks";
 import HomePage from "./pages/HomePage";
 import ChatBotUI from "./pages/ChatBotUI";
 import ResultsPage from "./pages/ResultsPage";
-import Testbotpage from "./pages/Testbotpage";
+import AboutUs from "./pages/AboutUs";
+import MapTestPage from "./pages/MapTestPage";
 
 const AddDestination = lazy(() => import("./pages/AddDestination"));
 
@@ -52,8 +53,10 @@ export default function App() {
               />
               <Route path={navlinks.home.path} element={<HomePage />} />
               <Route path="/prompt" element={<ChatBotUI />} />
+              <Route path={navlinks.about.path} element={<AboutUs />} />
               <Route path={navlinks.map.path} element={<MapViewPage />} />
               <Route path={navlinks.add.path} element={<AddDestination />} />
+              <Route path={"/testmapcard"} element={<MapTestPage />} />
             </Route>
             <Route path={navlinks.login.path} element={<AuthPage />} />
             <Route path="*" element={<ErrorScreen type={"404"} />} />
