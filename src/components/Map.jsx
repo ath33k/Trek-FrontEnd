@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useRef } from "react";
+import { useCallback, useEffect, useMemo, useRef } from "react";
 import { GoogleMap, MarkerF, DirectionsRenderer } from "@react-google-maps/api";
 import emojiPeople from "../assets/emojiPeople.svg";
 
@@ -10,6 +10,7 @@ export default function Map({
   currMarkerOnClick,
   mapOnClick,
   className,
+  setMarker,
 }) {
   const mapRef = useRef();
 
@@ -26,7 +27,7 @@ export default function Map({
 
   const onLoad = useCallback((map) => (mapRef.current = map), []);
   return (
-    <div className={`map h-full w-4/5  ${className}`}>
+    <div className={`map h-full w-full  ${className}`}>
       <GoogleMap
         zoom={10}
         center={destination}
