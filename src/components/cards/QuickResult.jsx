@@ -45,9 +45,7 @@ export default function QuickResult({ value }) {
         </ul>
       </nav>
       <div className=" bg-gradient-to-t from-black px-4 pb-2 pt-5 bottom-0 w-full absolute">
-        <h2 className="text-white text-lg font-bold ">
-          {value.name} - {value.uploaderName}
-        </h2>
+        <h2 className="text-white text-lg font-bold ">{value.name}</h2>
         <p className="text-white font-inter pt-1 text-sm">
           {value.description.length > 70
             ? value.description.substring(0, 70) + "..."
