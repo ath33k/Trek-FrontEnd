@@ -2,7 +2,9 @@ import { useEffect, useState } from "react";
 import MapDetails from "./MapDetails";
 import Map from "./Map";
 
-export default function MapComp({ destination }) {
+export default function MapComp({
+  destination = { lat: 6.87442, lng: 79.86682 },
+}) {
   // Use all these states when using Map component
 
   const [marker, setMarker] = useState(null);
@@ -57,7 +59,7 @@ export default function MapComp({ destination }) {
   // const theDestination = destination;
 
   return (
-    <div className=" flex md:flex-row flex-col  h-[90vh] m-8 rounded-2xl overflow-hidden shadow-[0_0px_20px_5px_rgba(0,0,0,0.4)]">
+    <div className=" flex md:flex-row flex-col  h-[80vh] m-8 rounded-2xl overflow-hidden shadow-[0_0px_20px_5px_rgba(0,0,0,0.4)]">
       <MapDetails
         marker={marker}
         setMarker={setMarker}
