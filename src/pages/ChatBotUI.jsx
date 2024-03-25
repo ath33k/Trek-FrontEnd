@@ -27,13 +27,16 @@ const ChatBotUI = () => {
       return;
     }
 
-    fetch("https://13.232.155.126/generate_tags", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ sentence: inputValue }),
-    }).then((response) => {
+    fetch(
+      "https://ec2-13-232-155-126.ap-south-1.compute.amazonaws.com/generate_tags",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ sentence: inputValue }),
+      }
+    ).then((response) => {
       response
         .json()
         .then((spots) => {
