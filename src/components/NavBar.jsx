@@ -7,6 +7,7 @@ import { Logo } from "./Logo";
 import Chip from "../components/Chip.jsx";
 import { FaSearch } from "react-icons/fa";
 import { navlinks } from "../navlinks.js";
+import TrekLogo from "../assets/treklogo.svg";
 
 export const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,15 +33,10 @@ export const NavBar = () => {
       setIsScrolled(window.scrollY > 0);
     };
 
-    // const handleScrollEnd = () => {
-    //   setIsScrolled(false);
-    // };
-
     window.addEventListener("scroll", handleScrollStart);
-    // window.addEventListener("scrollend", handleScrollEnd);
+
     return () => {
       window.removeEventListener("scroll", handleScrollStart);
-      // window.removeEventListener("scrollend", handleScrollEnd);
     };
   }, []);
   console.log(isScrolled);
@@ -59,10 +55,6 @@ export const NavBar = () => {
       name: "About us",
       path: navlinks.about.path,
     },
-    {
-      name: "Favorites",
-      path: "/",
-    },
   ];
 
   return (
@@ -78,24 +70,28 @@ export const NavBar = () => {
             className="text-2xl sm:text-3xl cursor-pointer md:hidden lg:hidden  mr-5"
           />
 
-          <Logo className={"md:ml-10"} />
+          <img src={TrekLogo} alt="Trek Logo" className="w-10 md:w-12 " />
 
-          <ul className="hidden md:flex lg:flex text-[16px] lg:text-[18px] font-medium">
-            {navBarLinks.map((link, index) => (
-              <NavLink
-                to={link.path}
-                className="m-2 hover:text-blue-500 hover:drop-shadow-md duration-300"
-                key={index}
-              >
-                {link.name}
-              </NavLink>
-            ))}
-          </ul>
-          <Chip
-            label={"Search"}
-            endIcon={<FaSearch />}
-            className=" hidden md:flex lg:flex bg-transparent border-solid border-black  border border-1  hover:bg-black hover:text-blue-300  md:mr-10 "
-          />
+          <div className="flex gap-4">
+            <ul className="hidden md:flex lg:flex text-[16px] lg:text-[18px] font-medium">
+              {navBarLinks.map((link, index) => (
+                <NavLink
+                  to={link.path}
+                  className="m-2 hover:text-blue-500 hover:drop-shadow-md duration-300"
+                  key={index}
+                >
+                  <li id={index} aria-label={link.name}>
+                    {link.name}
+                  </li>
+                </NavLink>
+              ))}
+            </ul>
+            <Chip
+              label={"Search"}
+              endIcon={<FaSearch />}
+              className=" hidden md:flex lg:flex bg-transparent border-solid border-black  border border-1  hover:bg-black hover:text-blue-300 "
+            />
+          </div>
         </div>
 
         {isOpen && (
@@ -131,7 +127,9 @@ function HamburgerLinks({ navBarLinks, onHandleMenu }) {
               className="m-3 sm:m-5 cursor-pointer font-bold inline-block hover:text-blue-400 duration-300"
               key={index}
             >
-              {link.name}
+              <li id={index} aria-label={link.name}>
+                {link.name}
+              </li>
             </NavLink>
           ))}
         </ul>

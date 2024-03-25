@@ -24,7 +24,7 @@ export default function AboutUs() {
         <Container>
           <div className="flex justify-center items-center border-b-2   lg:border-b-4 h-[45vh]  lg:h-[60vh] ">
             <div className="flex flex-col items-center p-8  md:w-[90%] lg:w-full gap-4 lg:gap-6 ">
-              <h1 className="text-2xl md:text-3xl lg:text-5xl font-semibold">
+              <h1 className="text-xl md:text-2xl lg:text-3xl font-semibold">
                 About Us
               </h1>
               <p className="text-justify text-xs md:text-base lg:text-lg">
@@ -43,7 +43,7 @@ export default function AboutUs() {
         <Container>
           <div className="flex justify-center">
             <div className="flex flex-col items-center p-8 w-[80%] md:w-[90%] lg:w-full gap-4 lg:gap-6 ">
-              <h1 className="text-2xl md:text-3xl lg:text-5xl font-semibold">
+              <h1 className="text-xl md:text-2xl lg:text-3xl font-semibold">
                 Our Team
               </h1>
               <p className="text-justify text-xs md:text-base lg:text-lg">
