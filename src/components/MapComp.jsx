@@ -10,7 +10,7 @@ export default function MapComp({ destination }) {
   const [direction, setDirection] = useState({
     origin: null,
     destination: null,
-    travelMode: google.maps.TravelMode.DRIVING,
+    travelMode: window.google.maps.TravelMode.DRIVING,
   });
   const [distance, setDistance] = useState("");
 
