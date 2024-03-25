@@ -87,16 +87,6 @@ const imageForSlider = [
 
 export default function HomePage() {
   // Add Category List
-  const categoryNames = ["Recommendation", "Family", "Adventure"];
-  const [selectedCategory, setSelectedCategory] = useState("Recommendation");
-
-  const categorySliders = imageForSlider
-    .map((img) => img)
-    .filter((img) => img.tags.includes(selectedCategory));
-
-  function handleCategorySelection(e) {
-    setSelectedCategory(() => e.target.id);
-  }
 
   return (
     <div className="my-14 mx-4 sm:mx-8 md:mx-14 md:my-16 lg:mx-28">
@@ -188,12 +178,7 @@ export default function HomePage() {
       </Container>
 
       {/* Sliders */}
-      <CategoryList
-        categoryNames={categoryNames}
-        selectedCategory={selectedCategory}
-        categorySliders={categorySliders}
-        handleCategorySelection={handleCategorySelection}
-      />
+      <CategoryList />
     </div>
   );
 }
