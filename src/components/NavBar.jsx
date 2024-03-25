@@ -55,10 +55,6 @@ export const NavBar = () => {
       name: "About us",
       path: navlinks.about.path,
     },
-    {
-      name: "Favorites",
-      path: "/",
-    },
   ];
 
   return (
@@ -76,24 +72,26 @@ export const NavBar = () => {
 
           <img src={TrekLogo} alt="Trek Logo" className="w-10 md:w-12 " />
 
-          <ul className="hidden md:flex lg:flex text-[16px] lg:text-[18px] font-medium">
-            {navBarLinks.map((link, index) => (
-              <NavLink
-                to={link.path}
-                className="m-2 hover:text-blue-500 hover:drop-shadow-md duration-300"
-                key={index}
-              >
-                <li id={index} aria-label={link.name}>
-                  {link.name}
-                </li>
-              </NavLink>
-            ))}
-          </ul>
-          <Chip
-            label={"Search"}
-            endIcon={<FaSearch />}
-            className=" hidden md:flex lg:flex bg-transparent border-solid border-black  border border-1  hover:bg-black hover:text-blue-300  "
-          />
+          <div className="flex gap-4">
+            <ul className="hidden md:flex lg:flex text-[16px] lg:text-[18px] font-medium">
+              {navBarLinks.map((link, index) => (
+                <NavLink
+                  to={link.path}
+                  className="m-2 hover:text-blue-500 hover:drop-shadow-md duration-300"
+                  key={index}
+                >
+                  <li id={index} aria-label={link.name}>
+                    {link.name}
+                  </li>
+                </NavLink>
+              ))}
+            </ul>
+            <Chip
+              label={"Search"}
+              endIcon={<FaSearch />}
+              className=" hidden md:flex lg:flex bg-transparent border-solid border-black  border border-1  hover:bg-black hover:text-blue-300 "
+            />
+          </div>
         </div>
 
         {isOpen && (
