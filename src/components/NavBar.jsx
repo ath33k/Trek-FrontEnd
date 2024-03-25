@@ -7,7 +7,7 @@ import { Logo } from "./Logo";
 import Chip from "../components/Chip.jsx";
 import { FaSearch } from "react-icons/fa";
 import { navlinks } from "../navlinks.js";
-import TrekLogo from "../assets/treklogo.svg";
+import treklogo from "../assets/treklogo.svg";
 
 export const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -70,7 +70,11 @@ export const NavBar = () => {
             className="text-2xl sm:text-3xl cursor-pointer md:hidden lg:hidden  mr-5"
           />
 
-          <img src={TrekLogo} alt="Trek Logo" className="w-10 md:w-12 " />
+          <img
+            src={treklogo}
+            alt="Trek Logo"
+            className="w-10 md:w-12 object-contain"
+          />
 
           <div className="flex gap-4">
             <ul className="hidden md:flex lg:flex text-[16px] lg:text-[18px] font-medium">
