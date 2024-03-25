@@ -39,8 +39,8 @@ export default function MapDetails({
 
   return (
     <div className=" w-full md:w-2/5 bg-black text-white p-8 md:p-12">
-      <h1 className="text-2xl font-bold">CONTROLLER</h1>
-      <h2>Tap on the map Select your current location or enter below</h2>
+      <h2 className="text-2xl font-bold">CONTROLLER</h2>
+      <h3>Tap on the map Select your current location or enter below</h3>
 
       <div className="flex gap-5 flex-wrap items-center mb-5 md:mb-2 md:gap-2  ">
         <Autocomplete>
@@ -51,7 +51,11 @@ export default function MapDetails({
             ref={originRef}
           />
         </Autocomplete>
-        <button className="rounded-xl border-2 p-1 px-2 " onClick={handleClick}>
+        <button
+          id="mapDone"
+          className="rounded-xl border-2 p-1 px-2 "
+          onClick={handleClick}
+        >
           ✔️
         </button>
       </div>
