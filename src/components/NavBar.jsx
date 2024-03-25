@@ -92,7 +92,7 @@ export const NavBar = () => {
           <Chip
             label={"Search"}
             endIcon={<FaSearch />}
-            className=" hidden md:flex lg:flex bg-transparent border-solid border-black  border border-1  hover:bg-black hover:text-blue-300  md:mr-10 "
+            className=" hidden md:flex lg:flex bg-transparent border-solid border-black  border border-1  hover:bg-black hover:text-blue-300  "
           />
         </div>
 
