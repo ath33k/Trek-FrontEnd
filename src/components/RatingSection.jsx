@@ -6,7 +6,15 @@ export default function RatingComponent({
   totalRating,
   reviewsCount,
   ratings = { 4: 0, 5: 0, 3: 0, 2: 0, 1: 0 },
+  pageID,
 }) {
+
+  // const [tags, setTags] = useState([]);
+  // const [ratingsSummary, setRatingsSummary] = useState({
+  //   totalRating: 0,
+  //   reviewsCount: 0,
+  //   ratings: { 5: 0, 4: 0, 3: 0, 2: 0, 1: 0 },
+  // });
   const renderStars = (rating) => {
     let stars = [];
     for (let i = 0; i < 5; i++) {

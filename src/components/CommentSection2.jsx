@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 
 import { useState, useEffect } from "react";
-import profilePic from "../assets/sigiriya.png"; // Replace with your actual profile image import
+import profilePic from "../assets/No Image.jpg"; // Replace with your default profile image import
 
 
 import Rating from "react-rating-stars-component";
@@ -33,7 +33,7 @@ const CommentSection2 = ({ commentsData = [], pageID }) => {
     const commentsWithFormattedDate = commentsData.map(comment => ({
       ...comment,
       date: formatDate(comment.date),
-      photourl: comment.photourl !== 'N/A' ? comment.photourl : 'path/to/default_image.png'
+      photourl: comment.photourl !== 'N/A' && comment.photourl ? comment.photourl : profilePic
     }));
     setVisibleComments(commentsWithFormattedDate.slice(0, 2));
   }, [commentsData]);
@@ -46,13 +46,14 @@ const CommentSection2 = ({ commentsData = [], pageID }) => {
       const commentToBeAdded = {
         comment: newComment,
         rating: rating,
-        username: username, // You should replace this with actual user information
+        username: username, //  user information
         //date: {
           //seconds: Math.floor(Date.now() / 1000),
           //nanoseconds: 0, // Firestore timestamp format
         //},
         date: { seconds: Math.floor(Date.now() / 1000), nanoseconds: 0 },
-        photourl: "User's Photo URL" // Again, use actual data
+        //photourl: "User's Photo URL"
+        photourl:user?.photoURL && user.photoURL !== 'N/A' ? user.photoURL : profilePic 
       };
   
       try {
@@ -88,14 +89,14 @@ const CommentSection2 = ({ commentsData = [], pageID }) => {
       setVisibleComments(commentsData.map(comment => ({
         ...comment,
         date: formatDate(comment.date),
-        photourl: comment.photourl !== 'N/A' ? comment.photourl : 'path/to/default_image.png'
+        photourl: comment.photourl !== 'N/A'  && comment.photourl ? comment.photourl : profilePic
       })));
     } else {
       // Showing limited comments
       setVisibleComments(commentsData.slice(0, 2).map(comment => ({
         ...comment,
         date: formatDate(comment.date),
-        photourl: comment.photourl !== 'N/A' ? comment.photourl : 'path/to/default_image.png'
+        photourl: comment.photourl !== 'N/A' && comment.photourl ? comment.photourl : profilePic
       })));
     }
   };
@@ -126,7 +127,7 @@ const CommentSection2 = ({ commentsData = [], pageID }) => {
             <div key={idx} className="bg-white shadow p-4 rounded-lg mb-5">
               <div className="flex items-center mb-4">
                 <img
-                  src={profilePic}
+                  src={comment.photourl||profilePic}
                   alt="Profile"
                   className="w-8 h-8 rounded-full mr-2"
                 />
@@ -190,7 +191,7 @@ const CommentSection2 = ({ commentsData = [], pageID }) => {
 
       <div className="flex items-center justify-between">
         <img
-          src={profilePic}
+          src={user.photoURL||profilePic}
           alt="Your Profile"
           className="w-10 h-10 rounded-full object-cover mr-5"
         />
