@@ -57,6 +57,17 @@ export const addDestination = async (db, destination) => {
   }
 };
 
+export const collectUserPrompts = async (db, propmt) => {
+  try {
+    const propmtRef = await addDoc(collection(db, "prompts"), propmt);
+    console.log("Document written with ID: ", propmtRef.id);
+    return propmtRef;
+  } catch (e) {
+    console.error(e);
+    return null;
+  }
+};
+
 export const getimageURL = async (imgid, path) => {
   const _ref = ref(storage, path + imgid);
   let url = null;

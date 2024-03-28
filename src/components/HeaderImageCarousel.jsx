@@ -57,7 +57,7 @@ const HeaderImageCarousel = ({
           {images.map((_, index) => (
             <button
               key={index}
-              className={`h-2 w-2 mx-1 rounded-full shadow-sm shadow-gray-400 ${
+              className={`h-2 w-2 mx-1 rounded-full shadow-sm shadow-gray-400 z-50 ${
                 index === activeIndex ? "bg-gray-200" : "bg-gray-400"
               }`}
               onClick={() => setActiveIndex(index)}

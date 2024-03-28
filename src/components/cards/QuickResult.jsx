@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { getimageURL } from "../../firefunctions";
-import { MdOutlineUnfoldMore } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import { BiExpandAlt } from "react-icons/bi";
 /* eslint-disable react/prop-types */

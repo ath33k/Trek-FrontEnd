@@ -1,52 +1,158 @@
 import { useState } from "react";
-import Container from "../components/Container";
-import { FaCamera, FaCheck } from "react-icons/fa";
+
+import treklogo from "../assets/treklogo.svg";
+import { IoIosSend } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
+import { navlinks } from "../navlinks";
+import { collectUserPrompts } from "../firefunctions";
+import { db } from "../config/firebase";
 
 const ChatBotUI = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [inputValue, setInputValue] = useState("");
-  const [isCameraClicked, setIsCameraClicked] = useState(false);
+  const [wcount, setWCount] = useState(0);
 
   const maxWordCount = 500;
+  const minWordCount = 3;
+
+  const navigate = useNavigate();
 
   const handleSubmit = () => {
     setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 3000);
+
+    if (wcount < 3 || wcount > maxWordCount) {
+      setInterval(() => {
+        setIsLoading(false);
+      }, 1000);
+      return;
+    }
+
+    fetch("https://15.206.164.96/generate_tags", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ sentence: inputValue }),
+    }).then((response) => {
+      response
+        .json()
+        .then((spots) => {
+          const spnames = spots.map((spot) => spot.name);
+          collectUserPrompts(db, {
+            sentence: inputValue,
+            suggestions: spnames,
+          });
+          navigate(navlinks.results.path, { state: { results: spots } });
+          setIsLoading(false);
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          setInterval(() => {
+            setIsLoading(false);
+          }, 2000);
+        });
+    });
+    setIsLoading(false);
   };
 
   const handleInputChange = (e) => {
-    const inputWords = e.target.value.split(/\s+/);
-    if (inputWords.length <= maxWordCount) {
-      setInputValue(e.target.value);
-    } else {
-      alert("You have reached the maximum word count of 500.");
-    }
-  };
+    const inputWords = e.target.value
+      .trim()
+      .split(/\s+/)
+      .filter((word) => word !== "");
 
-  const handleCameraClick = () => {
-    setIsCameraClicked(true);
-    setTimeout(() => {
-      setIsCameraClicked(false);
-    }, 600);
+    setInputValue(e.target.value);
+    setWCount(inputWords.length);
   };
 
   return (
-    <Container>
-      <div className="fixed inset-0 bg-white bg-opacity-30 backdrop-blur-sm flex flex-col items-center justify-center">
+    <div
+      className="flex flex-col items-center justify-center h-screen w-screen px-1"
+      style={{
+        backgroundImage: `url(${"/wallpaper1.webp"})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      <div className="px-2 pt-2 pb-8 bg-white bg-opacity-80 rounded-lg shadow-lg mb-4 w-full max-w-[500px]">
+        <span className=" flex items-center gap-2 mb-2">
+          <img
+            src={treklogo}
+            alt="treklogo"
+            className="w-10 h-10 object-contain"
+          />
+          <h2 className="text-2xl font-bold font-oswald text-gray-700">Trek</h2>
+        </span>
+        <div className=" flex gap-2">
+          <textarea
+            onChange={handleInputChange}
+            value={inputValue}
+            placeholder="Describe your dream destination..."
+            rows={3}
+            className="resize-none p-2.5 flex-grow text-sm text-gray-700 bg-gray-50 rounded-lg border border-gray-300 focus:ring-[#46B0A9] focus:border-[#46B0A9] "
+          ></textarea>
+          <button
+            disabled={isLoading}
+            className=" p-0 w-10 h-10 relative min-w-0 min-h-0 text-xl rounded-full bg-[#46B0A9] text-white"
+            onClick={handleSubmit}
+          >
+            {isLoading ? (
+              <div className="absolute inset-0 flex items-center justify-center -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+                <svg
+                  className="animate-spin h-5 w-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  ></circle>
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 0116 0H4z"
+                  ></path>
+                </svg>
+              </div>
+            ) : (
+              <IoIosSend className=" absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" />
+            )}
+          </button>
+        </div>
+        <div className="flex gap-2">
+          <p
+            className={`text-sm font-oswald ${
+              wcount > maxWordCount ? " text-red-600" : " text-gray-500"
+            }`}
+          >
+            {wcount}/{maxWordCount}
+          </p>
+          <p className=" text-sm text-red-800">
+            {wcount > maxWordCount
+              ? "Maximum word count exceeded"
+              : wcount < minWordCount
+              ? "At least 3 words required"
+              : ""}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ChatBotUI;
+{
+  /* <div className="fixed inset-0 bg-white bg-opacity-30 backdrop-blur-sm flex flex-col items-center justify-center">
         <div className="p-8 bg-white bg-opacity-80 rounded-lg shadow-lg text-center">
           <h2 className="text-2xl font-bold text-gray-700 mb-4">
             𝗗𝗘𝗦𝗖𝗥𝗜𝗕𝗘 𝗬𝗢𝗨𝗥 𝗗𝗥𝗘𝗔𝗠 𝗗𝗘𝗦𝗧𝗜𝗡𝗔𝗧𝗜𝗢𝗡!
           </h2>
           <div className="flex justify-center w-full max-w-xl">
-            <FaCamera
-              className={`text-[#46B0A9] self-center mr-3 cursor-pointer transition-transform duration-300 ${
-                isCameraClicked ? "scale-75" : "scale-100"
-              }`}
-              size={40}
-              onClick={handleCameraClick}
-            />
             <input
               className="form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#46B0A9] focus:ring focus:ring-[#46B0A9] focus:ring-opacity-50"
               type="text"
@@ -95,9 +201,5 @@ const ChatBotUI = () => {
             </div>
           )}
         </div>
-      </div>
-    </Container>
-  );
-};
-
-export default ChatBotUI;
+      </div> */
+}

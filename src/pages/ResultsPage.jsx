@@ -3,9 +3,12 @@ import Slider from "react-slick";
 
 import QuickResult from "../components/cards/QuickResult";
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 
-export default function ResultsPage({ results }) {
+export default function ResultsPage() {
   const [resindex, setResIndex] = useState(0);
+  const location = useLocation();
+  const results = location.state.results;
 
   return (
     <div className=" w-[500px] mx-auto relative">

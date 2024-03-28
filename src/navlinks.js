@@ -3,6 +3,10 @@ export const navlinks = {
     name: "Home",
     path: "/",
   },
+  about: {
+    name: "AboutUs",
+    path: "/aboutus",
+  },
   login: {
     name: "Login",
     path: "/login",
@@ -22,5 +26,9 @@ export const navlinks = {
   results: {
     name: "Results",
     path: "/results",
+  },
+  prompt: {
+    name: "Prompt",
+    path: "/prompt",
   },
 };

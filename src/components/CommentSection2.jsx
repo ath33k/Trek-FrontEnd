@@ -1,6 +1,9 @@
 /* eslint-disable react/prop-types */
+
 import { useState, useEffect } from "react";
 import profilePic from "../assets/sigiriya.png"; // Replace with your actual profile image import
+
+
 import Rating from "react-rating-stars-component";
 import { doc, updateDoc, arrayUnion } from "firebase/firestore";
 //import { db } from "../path/to/your/firebase/config";

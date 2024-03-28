@@ -11,8 +11,10 @@ import AuthRoute from "./components/Routes/AuthRoute";
 import ErrorScreen from "./components/Errors/ErrorScreen";
 import { navlinks } from "./navlinks";
 import HomePage from "./pages/HomePage";
-import Testbotpage from "./pages/Testbotpage";
+import ChatBotUI from "./pages/ChatBotUI";
 import ResultsPage from "./pages/ResultsPage";
+import AboutUs from "./pages/AboutUs";
+import MapTestPage from "./pages/MapTestPage";
 
 const AddDestination = lazy(() => import("./pages/AddDestination"));
 
@@ -50,9 +52,11 @@ export default function App() {
                 }
               />
               <Route path={navlinks.home.path} element={<HomePage />} />
-              <Route path="/testprompt" element={<Testbotpage />} />
+              <Route path={navlinks.prompt.path} element={<ChatBotUI />} />
+              <Route path={navlinks.about.path} element={<AboutUs />} />
               <Route path={navlinks.map.path} element={<MapViewPage />} />
               <Route path={navlinks.add.path} element={<AddDestination />} />
+              <Route path={"/testmapcard"} element={<MapTestPage />} />
             </Route>
             <Route path={navlinks.login.path} element={<AuthPage />} />
             <Route path="*" element={<ErrorScreen type={"404"} />} />

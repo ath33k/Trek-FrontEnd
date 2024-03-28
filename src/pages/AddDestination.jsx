@@ -6,7 +6,7 @@ import { useUploadFile } from "react-firebase-hooks/storage";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import LoadingScreen from "../components/Loading/LoadingScreen";
 import { useEffect, useState } from "react";
-import { addDestination } from "../firefunctions";
+import { collectUserPrompts } from "../firefunctions";
 import { db, storage } from "../config/firebase";
 import { ref as storageRef } from "firebase/storage";
 import { collection } from "firebase/firestore";
@@ -42,7 +42,7 @@ export default function AddDestination() {
     e.preventDefault();
 
     try {
-      const destRef = await addDestination(db, {
+      const destRef = await collectUserPrompts(db, {
         ...formData,
         // add only file names to the destination object
         desktopImages: formData.desktopImages.map((file) => file.name),

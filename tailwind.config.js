@@ -4,6 +4,7 @@ export default {
   theme: {
     fontFamily: {
       inter: ["Inter", "sans-serif"],
+      oswald: ["Oswald", "sans-serif"],
     },
     extend: {},
   },

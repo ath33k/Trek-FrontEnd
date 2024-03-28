@@ -76,7 +76,7 @@ export default function FDetialPage() {
 
       <div className="w-full rounded-t-[40px] flex flex-col gap-2 rounded-b-none px-4 md:px-5 ">
         <h1 className="text-3xl font-bold mb-3 text-gray-900 font-inter">
-          {value.name}
+          {value.name} - {value.uploaderName}
         </h1>
         <ExpandableText className=" text-base text-gray-800 text-justify font-inter">
           {value.description}
