@@ -2,24 +2,21 @@
 import Container from "../components/Container";
 import ExpandableText from "../components/ExpandableText";
 import HeaderImageCarousel from "../components/HeaderImageCarousel";
-
 import Chip from "../components/Chip";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import RatingComponent2 from "../components/RatingSection2";
-import CommentSection2 from "../components/CommentSection2";
+import CommentSection3 from "../components/CommentSection3";
 import { useDocumentDataOnce } from "react-firebase-hooks/firestore";
-// import { useAuthState } from 'react-firebase-hooks/auth';
-// import { auth } from '../config/firebase';
 import ScrollSlider from "../components/ScrollSlider";
 import LoadingScreen from "../components/Loading/LoadingScreen";
 import ErrorScreen from "../components/Errors/ErrorScreen";
-import { doc, getDoc, query, where, collection   } from "firebase/firestore";
+import { doc} from "firebase/firestore";
 import { db } from "../config/firebase";
 import { useEffect, useState } from "react";
 import { getimageURL } from "../firefunctions";
 import { useParams } from "react-router-dom";
 import { comment } from "postcss";
-import RatingComponent from "../components/RatingSection2";
+//import RatingComponent from "../components/RatingSection2";
 
 export default function FDetialPage() {
   const params = useParams();
@@ -28,7 +25,7 @@ export default function FDetialPage() {
   const [value, loading, error] = useDocumentDataOnce(
     doc(db, "destinations", params.id)
   );
-  const [commentsData, setCommentsData] = useState([]);
+  //const [commentsData, setCommentsData] = useState([]);
   //const [user] = useAuthState(auth);
   useEffect(() => {
     if (value) {
@@ -45,22 +42,8 @@ export default function FDetialPage() {
     }
   }, [params.id, value]);
 
-  // Fetch comments
-  useEffect(() => {
-    const fetchComments = async () => {
-      const commentsDocRef = doc(db, 'comments', params.id);
-      const docSnapshot = await getDoc(commentsDocRef);
-      if (docSnapshot.exists()) {
-        setCommentsData(docSnapshot.data().comments);
-      } else {
-        console.log('No comments document found for this destination.');
-      }
-    };
 
 
-    fetchComments();
-  }, [params.id]);
-  //console.log(commentsData);  
 
   if (loading) {
     return <LoadingScreen />;
@@ -106,7 +89,7 @@ export default function FDetialPage() {
             /> */}
             <RatingComponent2 pageID={params.id}/>
           </div>
-          <CommentSection2 commentsData={commentsData} pageID={params.id} />
+          <CommentSection3  pageID={params.id}  />
         </div>
       </div>
     </Container>
