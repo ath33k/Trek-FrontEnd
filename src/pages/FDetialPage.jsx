@@ -25,8 +25,13 @@ export default function FDetialPage() {
   const [value, loading, error] = useDocumentDataOnce(
     doc(db, "destinations", params.id)
   );
+  const [refreshRating, setRefreshRating] = useState(false);
   //const [commentsData, setCommentsData] = useState([]);
   //const [user] = useAuthState(auth);
+  const onCommentSubmit = () => {
+    // This will be passed down to CommentSection3 and called after a comment is submitted
+    setRefreshRating(prev => !prev); // Toggles the state to force refresh
+  };
   useEffect(() => {
     if (value) {
       setCarouselImages(undefined);
@@ -42,7 +47,7 @@ export default function FDetialPage() {
     }
   }, [params.id, value]);
 
-
+  
 
 
   if (loading) {
@@ -87,9 +92,9 @@ export default function FDetialPage() {
               ratings={value.ratings}
               pageID={params.id}
             /> */}
-            <RatingComponent2 pageID={params.id}/>
+            <RatingComponent2 pageID={params.id} refreshRating={refreshRating}/>
           </div>
-          <CommentSection3  pageID={params.id}  />
+          <CommentSection3  pageID={params.id} onCommentSubmit={onCommentSubmit} />
         </div>
       </div>
     </Container>

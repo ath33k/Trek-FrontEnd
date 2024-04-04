@@ -4,8 +4,8 @@ import Rating from "react-rating-stars-component";
 import { db } from "../config/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../config/firebase";
-import { doc, getDoc, updateDoc, arrayUnion } from "firebase/firestore";
-const CommentSection3 = ({ pageID }) => {
+import { doc, getDoc, updateDoc, arrayUnion, setDoc } from "firebase/firestore";
+const CommentSection3 = ({ pageID, onCommentSubmit }) => {
   // const [visibleComments, setVisibleComments] = useState(
   //   commentsData.slice(0, 2)
   // );
@@ -49,27 +49,66 @@ const CommentSection3 = ({ pageID }) => {
   }, [pageID]);
   //console.log(commentsData);
 
+  // const handleSend = async () => {
+  //   if (newComment.trim() || (rating && user)) {
+  //     const commentToBeAdded = {
+  //       comment: newComment,
+  //       rating: rating,
+  //       username: user.displayName || "Anonymous",
+  //       date: { seconds: Math.floor(Date.now() / 1000), nanoseconds: 0 }, // This will need to be adjusted Firestore date format
+  //       photourl: user.photoURL || profilePic,
+  //     };
+
+  //     try {
+  //       const commentsRef = doc(db, "comments", pageID);
+  //       await updateDoc(commentsRef, {
+  //         comments: arrayUnion(commentToBeAdded),
+  //       });
+
+  //       setNewComment("");
+  //       setRating(0);
+  //       setVisibleComments(commentsData);
+  //       // Re-fetch comments to include the newly added comment
+  //       await fetchComments();
+  //     } catch (error) {
+  //       console.error("Error writing comment: ", error);
+  //     }
+  //   }
+  // };
+
   const handleSend = async () => {
     if (newComment.trim() || (rating && user)) {
       const commentToBeAdded = {
         comment: newComment,
         rating: rating,
         username: user.displayName || "Anonymous",
-        date: { seconds: Math.floor(Date.now() / 1000), nanoseconds: 0 }, // This will need to be adjusted to your Firestore date format
+        date: { seconds: Math.floor(Date.now() / 1000), nanoseconds: 0 }, // Adjusting to Firestore date format
         photourl: user.photoURL || profilePic,
       };
-
+  
+      const commentsRef = doc(db, "comments", pageID);
+  
       try {
-        const commentsRef = doc(db, "comments", pageID);
-        await updateDoc(commentsRef, {
-          comments: arrayUnion(commentToBeAdded),
-        });
-
+        const docSnapshot = await getDoc(commentsRef);
+        
+        if (docSnapshot.exists()) {
+          // If pageID exists, update the document with the new comment
+          await updateDoc(commentsRef, {
+            comments: arrayUnion(commentToBeAdded),
+          });
+        } else {
+          // If pageID does not exist, create the document with a new comments array
+          await setDoc(commentsRef, {
+            comments: [commentToBeAdded], // Start with a new array containing the new comment
+          });
+        }
+  
         setNewComment("");
         setRating(0);
-        setVisibleComments(commentsData);
-        // Re-fetch comments to include the newly added comment
+        setVisibleComments(commentsData); // Assuming commentsData is the current array of comments
+        // The re-fetch is implicit since you've added the new comment to the visible state
         await fetchComments();
+        onCommentSubmit();
       } catch (error) {
         console.error("Error writing comment: ", error);
       }
