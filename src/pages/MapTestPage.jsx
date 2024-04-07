@@ -1,10 +1,10 @@
-import React from "react";
 import MapViewCard from "../components/MapViewCard";
 import { useJsApiLoader } from "@react-google-maps/api";
 import Container from "../components/Container";
 import { Link } from "react-router-dom";
 import { navlinks } from "../navlinks";
 import Chip from "../components/Chip";
+import LoadingScreen from "../components/Loading/LoadingScreen";
 
 export default function MapTestPage() {
   const apiKey = "AIzaSyBPaYveAngQ1IzyBvJKjPy_LpLxECZPchQ";
@@ -12,7 +12,8 @@ export default function MapTestPage() {
     googleMapsApiKey: apiKey,
     libraries: ["places"],
   });
-  if (!isLoaded) return <div>Loading...</div>;
+  if (!isLoaded)
+    return <LoadingScreen messages={["Loading Google Maps API..."]} />;
   return (
     <Container className={"m-4"}>
       <MapViewCard destination={{ lat: 6.87442, lng: 79.86682 }} />

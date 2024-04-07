@@ -16,21 +16,26 @@ import ResultsPage from "./pages/ResultsPage";
 import AboutUs from "./pages/AboutUs";
 import MapTestPage from "./pages/MapTestPage";
 import SearchPage from "./pages/SearchPage";
+import { useJsApiLoader } from "@react-google-maps/api";
 
 const AddDestination = lazy(() => import("./pages/AddDestination"));
 
 export default function App() {
   document.title = window.location.pathname.replaceAll("/", "") || "Home";
+  const apiKey = "AIzaSyBPaYveAngQ1IzyBvJKjPy_LpLxECZPchQ";
+  const { isLoaded } = useJsApiLoader({
+    googleMapsApiKey: apiKey,
+    libraries: ["places"],
+  });
+  if (!isLoaded)
+    return <LoadingScreen messages={["Loading Google Maps API..."]} />;
   return (
     <>
       <ErrorBoundary>
         <Suspense fallback={<LoadingScreen />}>
           <Routes>
             <Route element={<AuthRoute />}>
-              <Route
-                path={navlinks.fdpage.path}
-                element={<FDetialPage destinationID={"8onQvGuAicMdvL77ikOi"} />}
-              />
+              <Route path={navlinks.fdpage.path} element={<FDetialPage />} />
               <Route
                 path={navlinks.results.path}
                 element={

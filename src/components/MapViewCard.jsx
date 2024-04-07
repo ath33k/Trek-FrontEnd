@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+/* eslint-disable react/prop-types */
 import MapDetails from "../components/MapDetails";
 import Map from "../components/Map";
+import { useEffect, useState } from "react";
 
 export default function MapViewCard({ destination }) {
   const [marker, setMarker] = useState(null);
@@ -23,41 +24,42 @@ export default function MapViewCard({ destination }) {
       });
     }
   }, [marker, setMarker]);
-  console.log(marker);
 
   useEffect(
     function () {
+      async function fetchDirections(marker) {
+        if (!marker) return;
+
+        const service = new window.google.maps.DirectionsService();
+        const result = await service.route({
+          origin: marker,
+          destination: destination,
+          travelMode: window.google.maps.TravelMode.DRIVING,
+        });
+
+        setDirection(result);
+        setDistance(result.routes[0].legs[0].distance.text);
+      }
       fetchDirections(marker);
     },
 
-    [marker]
+    [destination, marker]
   );
-
-  async function fetchDirections(marker) {
-    if (!marker) return;
-
-    const service = new window.google.maps.DirectionsService();
-    const result = await service.route({
-      origin: marker,
-      destination: destination,
-      travelMode: window.google.maps.TravelMode.DRIVING,
-    });
-
-    setDirection(result);
-    setDistance(result.routes[0].legs[0].distance.text);
-  }
 
   //sample destination...
   // const theDestination = destination;
 
   return (
-    <div className="h-[20vh]  lg:h-[40vh] rounded-2xl overflow-hidden shadow-[0_0px_15px_5px_rgba(0,0,0,0.4)]">
+    <div className="rounded-2xl relative h-[300px] md:h-[500px] overflow-hidden">
       <Map
         location={destination}
         currMarker={marker}
         direction={direction}
         setMarker={setMarker}
       />
+      <div className="absolute top-0 right-0 bg-white p-2 rounded-bl-2xl text-black font-bold">
+        {distance}
+      </div>
     </div>
   );
 }

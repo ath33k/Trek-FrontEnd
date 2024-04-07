@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import profilePic from "../assets/No Image.jpg"; // Replace with your default profile image import
 import Rating from "react-rating-stars-component";
@@ -5,6 +6,7 @@ import { db } from "../config/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../config/firebase";
 import { doc, getDoc, updateDoc, arrayUnion, setDoc } from "firebase/firestore";
+import LoadingScreen from "./Loading/LoadingScreen";
 const CommentSection3 = ({ pageID, onCommentSubmit }) => {
   // const [visibleComments, setVisibleComments] = useState(
   //   commentsData.slice(0, 2)
@@ -13,7 +15,7 @@ const CommentSection3 = ({ pageID, onCommentSubmit }) => {
   const [newComment, setNewComment] = useState("");
   const [rating, setRating] = useState(0);
   const [showingAllComments, setShowingAllComments] = useState(false);
-  const [user] = useAuthState(auth);
+  const [user, loadingUserData] = useAuthState(auth);
   const [commentsData, setCommentsData] = useState([]);
   const ratingChanged = (newRating) => {
     console.log(newRating);
@@ -81,16 +83,16 @@ const CommentSection3 = ({ pageID, onCommentSubmit }) => {
       const commentToBeAdded = {
         comment: newComment,
         rating: rating,
-        username: user.displayName || "Anonymous",
+        username: user.displayName,
         date: { seconds: Math.floor(Date.now() / 1000), nanoseconds: 0 }, // Adjusting to Firestore date format
-        photourl: user.photoURL || profilePic,
+        photourl: user.photoURL,
       };
-  
+
       const commentsRef = doc(db, "comments", pageID);
-  
+
       try {
         const docSnapshot = await getDoc(commentsRef);
-        
+
         if (docSnapshot.exists()) {
           // If pageID exists, update the document with the new comment
           await updateDoc(commentsRef, {
@@ -102,7 +104,7 @@ const CommentSection3 = ({ pageID, onCommentSubmit }) => {
             comments: [commentToBeAdded], // Start with a new array containing the new comment
           });
         }
-  
+
         setNewComment("");
         setRating(0);
         setVisibleComments(commentsData); // Assuming commentsData is the current array of comments
@@ -123,6 +125,9 @@ const CommentSection3 = ({ pageID, onCommentSubmit }) => {
       setVisibleComments(commentsData.slice(0, 2));
     }
   };
+
+  if (loadingUserData)
+    return <LoadingScreen messages={["Loading user data"]} />;
 
   return (
     <div className="space-y-8">
