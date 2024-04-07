@@ -15,6 +15,7 @@ import ChatBotUI from "./pages/ChatBotUI";
 import ResultsPage from "./pages/ResultsPage";
 import AboutUs from "./pages/AboutUs";
 import MapTestPage from "./pages/MapTestPage";
+import SearchPage from "./pages/SearchPage";
 
 const AddDestination = lazy(() => import("./pages/AddDestination"));
 
@@ -57,6 +58,7 @@ export default function App() {
               <Route path={navlinks.map.path} element={<MapViewPage />} />
               <Route path={navlinks.add.path} element={<AddDestination />} />
               <Route path={"/testmapcard"} element={<MapTestPage />} />
+              <Route path={navlinks.search.path} element={<SearchPage />} />
             </Route>
             <Route path={navlinks.login.path} element={<AuthPage />} />
             <Route path="*" element={<ErrorScreen type={"404"} />} />

@@ -8,10 +8,12 @@ import Chip from "../components/Chip.jsx";
 import { FaSearch } from "react-icons/fa";
 import { navlinks } from "../navlinks.js";
 import treklogo from "../assets/treklogo.svg";
+import { useNavigate } from "react-router-dom";
 
 export const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(null);
+  const navigate = useNavigate();
 
   // when resizing for larger screen with menu state open and after come back to the smaller screen the menu still displays open.
   // used this to fix that issue
@@ -94,6 +96,7 @@ export const NavBar = () => {
               label={"Search"}
               endIcon={<FaSearch />}
               className=" hidden md:flex lg:flex bg-transparent border-solid border-black  border border-1  hover:bg-black hover:text-blue-300 "
+              onClick={() => navigate(navlinks.search.path)}
             />
           </div>
         </div>

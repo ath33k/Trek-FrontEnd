@@ -31,4 +31,12 @@ export const navlinks = {
     name: "Prompt",
     path: "/prompt",
   },
+  search: {
+    name: "Search",
+    path: "/search",
+  },
+  serverIP: {
+    name: "ServerIP",
+    path: "https://15.206.164.96",
+  },
 };

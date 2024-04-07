@@ -27,7 +27,7 @@ const ChatBotUI = () => {
       return;
     }
 
-    fetch("https://15.206.164.96/generate_tags", {
+    fetch(`${navlinks.serverIP.path}/generate_tags`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -52,7 +52,9 @@ const ChatBotUI = () => {
           }, 2000);
         });
     });
-    setIsLoading(false);
+    setInterval(() => {
+      setIsLoading(false);
+    }, 2000);
   };
 
   const handleInputChange = (e) => {

@@ -9,7 +9,6 @@ import { MdOutlineExplore } from "react-icons/md";
 import { ImConfused } from "react-icons/im";
 import { Link as LinkScroll } from "react-scroll";
 import CategoryList from "../components/CategoryList";
-import { useState } from "react";
 import wallpaper1 from "../assets/HeroImages/homepagewallpaper1.webp";
 import wallpaper2 from "../assets/HeroImages/homepagewallpaper2.webp";
 import wallpaper3 from "../assets/HeroImages/homepagewallpaper3.webp";
@@ -115,7 +114,7 @@ export default function HomePage() {
               or hidden natural wonders, our platform is your gateway to
               countless adventures waiting to be discovered.
             </p>
-            <NavLink to={navlinks.results.path}>
+            <NavLink to={navlinks.search.path}>
               <Chip
                 label={"Search"}
                 className="self-end"
