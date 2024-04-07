@@ -10,12 +10,13 @@ import { useDocumentDataOnce } from "react-firebase-hooks/firestore";
 import ScrollSlider from "../components/ScrollSlider";
 import LoadingScreen from "../components/Loading/LoadingScreen";
 import ErrorScreen from "../components/Errors/ErrorScreen";
-import { doc} from "firebase/firestore";
+import { doc } from "firebase/firestore";
 import { db } from "../config/firebase";
 import { useEffect, useState } from "react";
 import { getimageURL } from "../firefunctions";
 import { useParams } from "react-router-dom";
 import { comment } from "postcss";
+import MapViewCard from "../components/MapViewCard";
 //import RatingComponent from "../components/RatingSection2";
 
 export default function FDetialPage() {
@@ -31,7 +32,7 @@ export default function FDetialPage() {
     if (value) {
       setCarouselImages(undefined);
       value.desktopImages.forEach((img, index) => {
-        getimageURL(index, "/destinations/" + params.id + "/mobile/").then(
+        getimageURL(index, "/destinations/" + params.id + "/desktop/").then(
           (imginfo) => {
             setCarouselImages((prev) => {
               return [...(prev || []), imginfo];
@@ -41,9 +42,6 @@ export default function FDetialPage() {
       });
     }
   }, [params.id, value]);
-
-
-
 
   if (loading) {
     return <LoadingScreen />;
@@ -59,7 +57,7 @@ export default function FDetialPage() {
 
       <div className="w-full rounded-t-[40px] flex flex-col gap-2 rounded-b-none px-4 md:px-5 ">
         <h1 className="text-3xl font-bold mb-3 text-gray-900 font-inter">
-          {value.name} - {value.uploaderName}
+          {value.name}
         </h1>
         <ExpandableText className=" text-base text-gray-800 text-justify font-inter">
           {value.description}
@@ -79,6 +77,7 @@ export default function FDetialPage() {
             // images={images}
           />
         </div>
+        {/* <MapViewCard destination={value.location} /> */}
         <div className="mb-10 ml-3 mr-3">
           <div>
             {/* <RatingComponent
@@ -87,9 +86,9 @@ export default function FDetialPage() {
               ratings={value.ratings}
               pageID={params.id}
             /> */}
-            <RatingComponent2 pageID={params.id}/>
+            <RatingComponent2 pageID={params.id} />
           </div>
-          <CommentSection3  pageID={params.id}  />
+          <CommentSection3 pageID={params.id} />
         </div>
       </div>
     </Container>

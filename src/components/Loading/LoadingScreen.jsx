@@ -22,7 +22,7 @@ export default function LoadingScreen({
   }, [messages]);
 
   return (
-    <div className="flex items-center -z-50 justify-center h-screen w-screen bg-gray-100  text-gray-900">
+    <div className="flex items-center -z-50 fixed left-0 top-0 justify-center h-screen w-screen bg-gray-100  text-gray-900">
       <div className="flex flex-col items-center mb-10">
         <HashLoader
           loading={true}
