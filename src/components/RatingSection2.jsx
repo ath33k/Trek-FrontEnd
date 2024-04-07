@@ -2,7 +2,7 @@ import  { useEffect, useState } from 'react';
 import { doc, getDoc, collection, query, where, getDocs } from 'firebase/firestore';
 import { db } from '../config/firebase'; // Adjust the import path as per your setup
 
-export default function RatingComponent({ pageID }) {
+export default function RatingComponent({ pageID, refreshRating }) {
     const [tags, setTags] = useState([]);
     const [ratingsSummary, setRatingsSummary] = useState({
         totalRating: 0,
@@ -17,7 +17,7 @@ export default function RatingComponent({ pageID }) {
         }
 
         fetchData();
-    }, [pageID]); // Dependency array to re-run the effect if pageID changes
+    }, [pageID,refreshRating]); // Dependency array to re-run the effect if pageID changes
 
     const fetchTags = async () => {
         const docRef = doc(db, 'destinations', pageID);
@@ -77,12 +77,14 @@ export default function RatingComponent({ pageID }) {
         }
     };
     const renderRatingBars = (ratings, reviewsCount) => {
+        const totalRatings = Object.values(ratings).reduce((acc, count) => acc + count, 0);
         return Object.entries(ratings).sort(([a], [b]) => b - a).map(([star, count]) => (
             <div key={star} className="flex items-center space-x-1">
                 <span className="text-gray-600">{star}</span>
                 <div className="w-full bg-gray-200 rounded h-2">
                   <div
-                    className="bg-green-500 h-2 rounded"
+                    // className="bg-green-500 h-2 rounded"
+                    className={`h-2 rounded ${totalRatings === 0 ? 'bg-gray-300' : 'bg-green-500'}`}
                     style={{ width: `${(count / reviewsCount) * 100}%` }}
                   ></div>
                 </div>
