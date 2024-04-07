@@ -15,8 +15,7 @@ import { db } from "../config/firebase";
 import { useEffect, useState } from "react";
 import { getimageURL } from "../firefunctions";
 import { useParams } from "react-router-dom";
-import { comment } from "postcss";
-import MapViewCard from "../components/MapViewCard";
+
 //import RatingComponent from "../components/RatingSection2";
 
 export default function FDetialPage() {
