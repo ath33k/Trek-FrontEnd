@@ -40,7 +40,7 @@ const ChatBotUI = () => {
       body: JSON.stringify({ sentence: inputValue }),
     }).then((response) => {
       response
-        .json()
+        //  .json()
         .then((spots) => {
           const spnames = spots.map((spot) => spot.name);
           collectUserPrompts(db, {
