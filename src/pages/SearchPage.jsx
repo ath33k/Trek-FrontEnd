@@ -3,13 +3,21 @@ import { FaGlobeAsia } from "react-icons/fa";
 import { navlinks } from "../navlinks";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDocumentDataOnce } from "react-firebase-hooks/firestore";
+import { doc } from "firebase/firestore";
+import LoadingScreen from "../components/Loading/LoadingScreen";
+import ErrorScreen from "../components/Errors/ErrorScreen";
+import { db } from "../config/firebase";
 
 export default function SearchPage() {
   const [inputValue, setInputValue] = useState("");
   const navigate = useNavigate();
 
+  const [backendServer, loadingbackServer, errorbackserver] =
+    useDocumentDataOnce(doc(db, "server", "backend"));
+
   const handleSubmit = () => {
-    fetch(`${navlinks.serverIP.path}/search`, {
+    fetch(`${backendServer.path}/search`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -26,6 +34,10 @@ export default function SearchPage() {
         });
     });
   };
+
+  if (loadingbackServer) return <LoadingScreen />;
+  if (errorbackserver) return <ErrorScreen />;
+
   return (
     <Container>
       <form
