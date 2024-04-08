@@ -14,7 +14,7 @@ export default function SearchPage() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ sentence: inputValue }),
+      body: JSON.stringify({ query: inputValue }),
     }).then((response) => {
       response
         .json()

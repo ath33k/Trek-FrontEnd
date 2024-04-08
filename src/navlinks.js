@@ -37,6 +37,6 @@ export const navlinks = {
   },
   serverIP: {
     name: "ServerIP",
-    path: "https://15.206.164.96",
+    path: "https://13.127.246.156",
   },
 };
