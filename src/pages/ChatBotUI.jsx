@@ -39,23 +39,24 @@ const ChatBotUI = () => {
       },
       body: JSON.stringify({ sentence: inputValue }),
     }).then((response) => {
-      response
-        //  .json()
-        .then((spots) => {
-          const spnames = spots.map((spot) => spot.name);
-          collectUserPrompts(db, {
-            sentence: inputValue,
-            suggestions: spnames,
-          });
-          navigate(navlinks.results.path, { state: { results: spots } });
-          setIsLoading(false);
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-          setInterval(() => {
-            setIsLoading(false);
-          }, 2000);
-        });
+      console.log(response);
+      // response
+      //  .json()
+      // .then((spots) => {
+      //   const spnames = spots.map((spot) => spot.name);
+      //   collectUserPrompts(db, {
+      //     sentence: inputValue,
+      //     suggestions: spnames,
+      //   });
+      //   navigate(navlinks.results.path, { state: { results: spots } });
+      //   setIsLoading(false);
+      // })
+      // .catch((error) => {
+      //   console.error("Error:", error);
+      //   setInterval(() => {
+      //     setIsLoading(false);
+      //   }, 2000);
+      // });
     });
     setInterval(() => {
       setIsLoading(false);
