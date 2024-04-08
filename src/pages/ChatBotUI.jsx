@@ -6,12 +6,17 @@ import { useNavigate } from "react-router-dom";
 import { navlinks } from "../navlinks";
 import { collectUserPrompts } from "../firefunctions";
 import { db } from "../config/firebase";
+import { useDocumentDataOnce } from "react-firebase-hooks/firestore";
+import { doc } from "firebase/firestore";
+import LoadingScreen from "../components/Loading/LoadingScreen";
+import ErrorScreen from "../components/Errors/ErrorScreen";
 
 const ChatBotUI = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [wcount, setWCount] = useState(0);
-
+  const [backendServer, loadingbackServer, errorbackserver] =
+    useDocumentDataOnce(doc(db, "server", "backend"));
   const maxWordCount = 500;
   const minWordCount = 3;
 
@@ -27,7 +32,7 @@ const ChatBotUI = () => {
       return;
     }
 
-    fetch(`${navlinks.serverIP.path}/generate_tags`, {
+    fetch(`${backendServer.path}/generate_tags`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -66,6 +71,9 @@ const ChatBotUI = () => {
     setInputValue(e.target.value);
     setWCount(inputWords.length);
   };
+
+  if (loadingbackServer) return <LoadingScreen />;
+  if (errorbackserver) return <ErrorScreen />;
 
   return (
     <div
