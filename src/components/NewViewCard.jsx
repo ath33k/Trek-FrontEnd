@@ -13,6 +13,8 @@ export default function Newviewcard({
   height,
   description,
   rating,
+  district,
+  province,
   
 }) {
   const cardStyle = {
@@ -36,6 +38,8 @@ export default function Newviewcard({
               <span className="mr-[10px] text-[22px]">{rating}</span>
               <Rating />
             </div>
+            <h3 className=" text-[50px] pb-[20px] font-bold">{district}</h3>
+            <h3 className=" text-[50px] pb-[20px] font-bold">{province}</h3>
             <ExpandableText className="mt-[5px]">{description}</ExpandableText>
           </div>
         </div>
