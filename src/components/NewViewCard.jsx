@@ -13,7 +13,7 @@ export default function Newviewcard({
   height,
   description,
   rating,
-  distance,
+  
 }) {
   const cardStyle = {
     backgroundImage: `url(${backgroundImage})`,
@@ -35,9 +35,6 @@ export default function Newviewcard({
             <div className="flex h-[50px]">
               <span className="mr-[10px] text-[22px]">{rating}</span>
               <Rating />
-              <div className=" w-[80px] relative left-[170px] text-[25px]">
-                {distance} KM
-              </div>
             </div>
             <ExpandableText className="mt-[5px]">{description}</ExpandableText>
           </div>
