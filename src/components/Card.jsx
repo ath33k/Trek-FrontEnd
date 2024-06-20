@@ -1,4 +1,7 @@
-import React, {useEffect, useState } from "react";
+import {useEffect, useState } from "react";
+
+import db from './firebaseConfig';
+import Newviewcard from './NewViewCard';
 
 function Card() {
     const [cardsData, setCardsData] = useState([]);
@@ -11,5 +14,27 @@ function Card() {
         };
         fetchData();
     }, []);
+    
+    return(
+        <div className="Card">
+            {cardsData.length > 0 ?(
+                <div className="card-container">
+                    {cardsData.map(card =>(
+                        <Newviewcard
+                            key={card.id}
+                            title={card.title}
+                            backgroundImage={card.backgroundImage}
+                            width={card.width}
+                            height={card.height}
+                            description={card.description}
+                        />
+                            
+                    ))}
+                </div>    
+            ) : (
+                <div className="text-center text-xl">Loading.....</div>
+            )}
+        </div>
+    );
 }
 export default Card;
