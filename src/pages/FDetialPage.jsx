@@ -1,11 +1,11 @@
-/* eslint-disable react/prop-types */
+
 import Container from "../components/Container";
 import ExpandableText from "../components/ExpandableText";
 import HeaderImageCarousel from "../components/HeaderImageCarousel";
 import Chip from "../components/Chip";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import RatingComponent2 from "../components/RatingSection2";
-import CommentSection3 from "../components/CommentSection3";
+import CommentSection3 from "../components/CommentSection7"; // TODO:change comment section here
 import { useDocumentDataOnce } from "react-firebase-hooks/firestore";
 import ScrollSlider from "../components/ScrollSlider";
 import LoadingScreen from "../components/Loading/LoadingScreen";
@@ -16,7 +16,6 @@ import { useEffect, useState } from "react";
 import { getimageURL } from "../firefunctions";
 import { useParams } from "react-router-dom";
 import MapViewCard from "../components/MapViewCard";
-
 //import RatingComponent from "../components/RatingSection2";
 
 export default function FDetialPage() {
@@ -110,3 +109,5 @@ export default function FDetialPage() {
     </Container>
   );
 }
+
+
