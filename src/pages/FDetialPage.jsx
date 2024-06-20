@@ -1,11 +1,10 @@
-/* eslint-disable react/prop-types */
 import Container from "../components/Container";
 import ExpandableText from "../components/ExpandableText";
 import HeaderImageCarousel from "../components/HeaderImageCarousel";
 import Chip from "../components/Chip";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import RatingComponent2 from "../components/RatingSection2";
-import CommentSection3 from "../components/CommentSection3";
+import CommentSection3 from "../components/CommentSection4";
 import { useDocumentDataOnce } from "react-firebase-hooks/firestore";
 import ScrollSlider from "../components/ScrollSlider";
 import LoadingScreen from "../components/Loading/LoadingScreen";
