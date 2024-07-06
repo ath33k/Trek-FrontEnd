@@ -8,14 +8,11 @@
 // import LoadingScreen from "../components/Loading/LoadingScreen";
 // import ErrorScreen from "../components/Errors/ErrorScreen";
 // import { db } from "../config/firebase";
-
 // export default function SearchPage() {
 //   const [inputValue, setInputValue] = useState("");
 //   const navigate = useNavigate();
-
 //   const [backendServer, loadingbackServer, errorbackserver] =
 //     useDocumentDataOnce(doc(db, "server", "backend"));
-
 //   const handleSubmit = () => {
 //     fetch(`${backendServer.path}/search`, {
 //       method: "POST",
@@ -34,10 +31,8 @@
 //         });
 //     });
 //   };
-
 //   if (loadingbackServer) return <LoadingScreen />;
 //   if (errorbackserver) return <ErrorScreen />;
-
 //   return (
 //     <Container>
 //       <form
@@ -77,14 +72,14 @@
 //     </Container>
 //   );
 // }
-
 import React, { useState } from "react";
-import Container from "../components/Container";
+import { collection, getDocs } from "firebase/firestore";
 import { FaGlobeAsia } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { collection, getDocs } from "firebase/firestore";
-import LoadingScreen from "../components/Loading/LoadingScreen";
+
+import Container from "../components/Container";
 import ErrorScreen from "../components/Errors/ErrorScreen";
+import LoadingScreen from "../components/Loading/LoadingScreen";
 import { db } from "../config/firebase";
 
 export default function SearchPage() {
@@ -125,9 +120,12 @@ export default function SearchPage() {
   if (error) return <ErrorScreen />;
 
   return (
-    <Container>
+    <Container >
+      <div
+      className="w-auto h-screen items-center justify-center bg-cover bg-center bg-slate-500 border-[10px] "
+      >
       <form
-        className="max-w-md mx-auto px-2 h-screen flex flex-col justify-center"
+        className="max-w-md mx-auto p-4 h-screen flex flex-col justify-center"
         onSubmit={handleSubmit}
       >
         <label
@@ -157,6 +155,7 @@ export default function SearchPage() {
           </button>
         </div>
       </form>
+      </div>
     </Container>
   );
 }

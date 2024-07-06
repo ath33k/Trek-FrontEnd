@@ -1,20 +1,21 @@
-import { NavBar } from "../components/NavBar";
-import HeaderImageCarousel from "../components/HeaderImageCarousel";
-import Container from "../components/Container";
-import Chip from "../components/Chip";
-import BotButton from "../components/BotButton";
-import { MdAutoAwesome } from "react-icons/md";
 import { FaSearch } from "react-icons/fa";
-import { MdOutlineExplore } from "react-icons/md";
 import { ImConfused } from "react-icons/im";
+import { MdAutoAwesome } from "react-icons/md";
+import { MdOutlineExplore } from "react-icons/md";
+import { NavLink } from "react-router-dom";
 import { Link as LinkScroll } from "react-scroll";
+
+import BotButton from "../components/BotButton";
 import CategoryList from "../components/CategoryList";
+import Chip from "../components/Chip";
+import Container from "../components/Container";
+import HeaderImageCarousel from "../components/HeaderImageCarousel";
+import { NavBar } from "../components/NavBar";
 import wallpaper1 from "../assets/HeroImages/homepagewallpaper1.webp";
 import wallpaper2 from "../assets/HeroImages/homepagewallpaper2.webp";
 import wallpaper3 from "../assets/HeroImages/homepagewallpaper3.webp";
 import wallpaper4 from "../assets/HeroImages/homepagewallpaper4.webp";
 import wallpaper5 from "../assets/HeroImages/homepagewallpaper5.webp";
-import { NavLink } from "react-router-dom";
 import { navlinks } from "../navlinks";
 
 const imageList = [
@@ -67,7 +68,7 @@ export default function HomePage() {
 
       <h1
         id="whereTo"
-        className=" text-5xl font-bold mt-12 pt-28 mb-14 text-center"
+        className=" text-5xl font-bold mt-0 pt-28 mb-14 text-center"
       >
         Where To ?
       </h1>
@@ -77,19 +78,19 @@ export default function HomePage() {
         }
       >
         <Container
-          className={"bg-cyan-300 w-full p-6 rounded-2xl self-stretch"}
+          className={"bg-cyan-400 w-full p-10 rounded-2xl self-stretch"}
         >
           <div className="flex flex-col items-center gap-2">
             <span>
               <ImConfused className=" text-3xl" />
             </span>
             <h2 className="text-xl font-semibold mb-2">Not sure where ?</h2>
-            <p className="mb-2 font-inter">
-              Feeling lost or unsure of your next destination? Do not hesitate
-              to ask! Our AI is here to assist you.feel free to describe your
-              situation and let our AI offer its insights and explore potential
-              solutions with you. AI will help you to find your optimal
-              destination.
+            <p className="mb-2 font-inter items-center">
+            Do you need assistance choosing your next travel destination? 
+            Please do not be afraid to inquire! Our artificial intelligence 
+            is available to help. Please feel free to explain your circumstances, 
+            and our AI will be happy to share its ideas and work with you to find 
+            possible solutions. AI will assist you in selecting the best location.
             </p>
             <NavLink to={navlinks.prompt.path}>
               <Chip
@@ -103,7 +104,7 @@ export default function HomePage() {
         <Container
           className={"bg-green-300 w-full p-6 rounded-2xl self-stretch"}
         >
-          <div className="flex flex-col items-center gap-2">
+          <div className="flex flex-col items-center gap-2 mt-10">
             <span>
               <MdOutlineExplore className=" text-4xl" />
             </span>

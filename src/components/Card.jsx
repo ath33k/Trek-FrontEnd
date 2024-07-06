@@ -4,29 +4,31 @@ import db from './firebaseConfig';
 import Newviewcard from './NewViewCard';
 
 function Card() {
-    const [cardsData, setCardsData] = useState([]);
+    const [destinationsData, setDestinationsData] = useState([]);
     
     useEffect(() =>{
         const fetchData = async () => {
-            const cardCollection = await db.collection('destinations').get();
-            const cards = cardCollection.docs.map(doc => ({ id: doc.id, ...doc.data()}));
-            setCardsData(cards);
+            const destinationCollection = await db.collection('destinations').get();
+            const destinations = destinationCollection.docs.map(doc => ({ id: doc.id, ...doc.data()}));
+            setDestinationsData(destinations);
         };
         fetchData();
     }, []);
     
     return(
         <div className="Card">
-            {cardsData.length > 0 ?(
+            {destinationsData.length > 0 ?(
                 <div className="card-container">
-                    {cardsData.map(card =>(
+                    {destinationsData.map(destination =>(
                         <Newviewcard
-                            key={card.id}
-                            title={card.title}
-                            backgroundImage={card.backgroundImage}
-                            width={card.width}
-                            height={card.height}
-                            description={card.description}
+                            key={destination.id}
+                            title={destination.title}
+                            backgroundImage={destination.backgroundImage}
+                            width={destination.width}
+                            height={destination.height}
+                            description={destination.description}
+                            city={destination.city}
+                            district={destination.district}
                         />
                             
                     ))}

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
 import noimage from "../assets/imageback.jpg";
+import ImageSliderCarousal from "./ImageSliderCarousel";
 
 const HeaderImageCarousel = ({
   images = [{ src: noimage }, { src: noimage }],
@@ -30,7 +31,8 @@ const HeaderImageCarousel = ({
             className="whitespace-nowrap transition-transform pointer-events-none duration-700"
             style={{ transform: `translateX(-${activeIndex * 100}%)` }}
           >
-            {images.map((image, index) => (
+            <ImageSliderCarousal/>
+            {/* {images.map((image, index) => (
               <motion.img
                 key={index}
                 src={image.src}
@@ -46,7 +48,7 @@ const HeaderImageCarousel = ({
                   backgroundColor: ["black", "transparent"],
                 }}
               />
-            ))}
+            ))} */}
           </div>
         </div>
         <div

@@ -99,6 +99,7 @@ export const NavBar = () => {
               onClick={() => navigate(navlinks.search.path)}
             />
           </div>
+          
         </div>
 
         {isOpen && (
