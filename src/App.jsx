@@ -11,7 +11,7 @@ import AuthRoute from "./components/Routes/AuthRoute";
 import ErrorScreen from "./components/Errors/ErrorScreen";
 import { navlinks } from "./navlinks";
 import HomePage from "./pages/HomePage";
-import ChatBotUI from "./pages/ChatBotUI";
+import ChatBotUI from "./pages/ChatBotUI2"; //chage bot UI
 import ResultsPage from "./pages/ResultsPage";
 import AboutUs from "./pages/AboutUs";
 import MapTestPage from "./pages/MapTestPage";
