@@ -5,8 +5,15 @@ import { Routes, Route } from "react-router-dom";
 import Card from "./components/Card";
 import { ErrorBoundary } from "./components/Errors/ErrorBoundary";
 import ErrorScreen from "./components/Errors/ErrorScreen";
+<<<<<<< HEAD
 import LoadingScreen from "./components/Loading/LoadingScreen";
 import AuthRoute from "./components/Routes/AuthRoute";
+=======
+import { navlinks } from "./navlinks";
+import HomePage from "./pages/HomePage";
+import ChatBotUI from "./pages/ChatBotUI2"; //chage bot UI
+import ResultsPage from "./pages/ResultsPage";
+>>>>>>> b28f15dcd3470ec30deb4e4c59f72f86f0485111
 import AboutUs from "./pages/AboutUs";
 import AuthPage from "./pages/AuthPage";
 import ChatBotUI from "./pages/ChatBotUI";
