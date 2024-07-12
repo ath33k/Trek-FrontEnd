@@ -1,22 +1,24 @@
 import { Suspense, lazy } from "react";
-
 //const HomePage = lazy(() => import("./pages/HomePage"));
 import { Routes, Route } from "react-router-dom";
-const FDetialPage = lazy(() => import("./pages/FDetialPage"));
-const MapViewPage = lazy(() => import("./pages/MapViewPage"));
-import AuthPage from "./pages/AuthPage";
-import LoadingScreen from "./components/Loading/LoadingScreen";
+
+import Card from "./components/Card";
 import { ErrorBoundary } from "./components/Errors/ErrorBoundary";
-import AuthRoute from "./components/Routes/AuthRoute";
 import ErrorScreen from "./components/Errors/ErrorScreen";
-import { navlinks } from "./navlinks";
-import HomePage from "./pages/HomePage";
-import ChatBotUI from "./pages/ChatBotUI";
-import ResultsPage from "./pages/ResultsPage";
+import LoadingScreen from "./components/Loading/LoadingScreen";
+import AuthRoute from "./components/Routes/AuthRoute";
 import AboutUs from "./pages/AboutUs";
+import AuthPage from "./pages/AuthPage";
+import ChatBotUI from "./pages/ChatBotUI";
+import HomePage from "./pages/HomePage";
 import MapTestPage from "./pages/MapTestPage";
+import ResultsPage from "./pages/ResultsPage";
 import SearchPage from "./pages/SearchPage";
 import { useJsApiLoader } from "@react-google-maps/api";
+import { navlinks } from "./navlinks";
+
+const FDetialPage = lazy(() => import("./pages/FDetialPage"));
+const MapViewPage = lazy(() => import("./pages/MapViewPage"));
 
 const AddDestination = lazy(() => import("./pages/AddDestination"));
 
@@ -64,6 +66,7 @@ export default function App() {
               <Route path={navlinks.add.path} element={<AddDestination />} />
               <Route path={"/testmapcard"} element={<MapTestPage />} />
               <Route path={navlinks.search.path} element={<SearchPage />} />
+              <Route path={navlinks.card.path} element={<Card />} />
             </Route>
             <Route path={navlinks.login.path} element={<AuthPage />} />
             <Route path="*" element={<ErrorScreen type={"404"} />} />
