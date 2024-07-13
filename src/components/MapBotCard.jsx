@@ -87,7 +87,7 @@ const MapBotCard = ({ value }) => {
 
   const mapStyles = {
     height: '300px', // Set the height to 500px
-    width: '100%',
+    width: '50%',
   };
 
   const defaultCenter = {

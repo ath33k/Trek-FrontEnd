@@ -5,24 +5,21 @@ import { Routes, Route } from "react-router-dom";
 import Card from "./components/Card";
 import { ErrorBoundary } from "./components/Errors/ErrorBoundary";
 import ErrorScreen from "./components/Errors/ErrorScreen";
-<<<<<<< HEAD
 import LoadingScreen from "./components/Loading/LoadingScreen";
 import AuthRoute from "./components/Routes/AuthRoute";
-=======
 import { navlinks } from "./navlinks";
 import HomePage from "./pages/HomePage";
 import ChatBotUI from "./pages/ChatBotUI3"; //chage bot UI
 import ResultsPage from "./pages/ResultsPage";
->>>>>>> b28f15dcd3470ec30deb4e4c59f72f86f0485111
 import AboutUs from "./pages/AboutUs";
 import AuthPage from "./pages/AuthPage";
-import ChatBotUI from "./pages/ChatBotUI";
-import HomePage from "./pages/HomePage";
+//import ChatBotUI from "./pages/ChatBotUI";
+//import HomePage from "./pages/HomePage";
 import MapTestPage from "./pages/MapTestPage";
-import ResultsPage from "./pages/ResultsPage";
+//import ResultsPage from "./pages/ResultsPage";
 import SearchPage from "./pages/SearchPage";
 import { useJsApiLoader } from "@react-google-maps/api";
-import { navlinks } from "./navlinks";
+//import { navlinks } from "./navlinks";
 
 const FDetialPage = lazy(() => import("./pages/FDetialPage"));
 const MapViewPage = lazy(() => import("./pages/MapViewPage"));
