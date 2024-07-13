@@ -121,8 +121,9 @@ export default function SearchPage() {
 
   return (
     <Container >
-      <div
-      className="w-auto h-screen items-center justify-center bg-cover bg-center bg-slate-500 border-[10px] "
+      <div 
+      style={{backgroundImage: 'url(/assets/sunsetAtElla.jpg)'}}
+      className="w-auto h-screen items-center justify-center bg-cover bg-center border-[10px]"
       >
       <form
         className="max-w-md mx-auto p-4 h-screen flex flex-col justify-center"

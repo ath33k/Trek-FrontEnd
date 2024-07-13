@@ -1,3 +1,4 @@
+
 export const navlinks = {
   home: {
     name: "Home",
@@ -39,4 +40,8 @@ export const navlinks = {
     name: "ServerIP",
     path: "https://13.127.246.156",
   },
+card: {
+  name: "Card",
+  path: "/card",
+}  
 };

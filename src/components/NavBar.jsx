@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoCloseOutline } from "react-icons/io5";
 import { NavLink } from "react-router-dom";
-import { Logo } from "./Logo";
+// import { Logo } from "./Logo";
 import Chip from "../components/Chip.jsx";
 import { FaSearch } from "react-icons/fa";
 import { navlinks } from "../navlinks.js";
@@ -56,6 +56,14 @@ export const NavBar = () => {
     {
       name: "About us",
       path: navlinks.about.path,
+    },
+    {
+      name: "Search",
+      path: navlinks.search.path,
+    },
+    {
+      name: "Card",
+      path: navlinks.card.path,
     },
   ];
 

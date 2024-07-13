@@ -11,11 +11,11 @@ import Chip from "../components/Chip";
 import Container from "../components/Container";
 import HeaderImageCarousel from "../components/HeaderImageCarousel";
 import { NavBar } from "../components/NavBar";
-import wallpaper1 from "../assets/HeroImages/homepagewallpaper1.webp";
-import wallpaper2 from "../assets/HeroImages/homepagewallpaper2.webp";
-import wallpaper3 from "../assets/HeroImages/homepagewallpaper3.webp";
-import wallpaper4 from "../assets/HeroImages/homepagewallpaper4.webp";
-import wallpaper5 from "../assets/HeroImages/homepagewallpaper5.webp";
+import wallpaper4 from "../assets/HeroImages/homepagewallpaper1.webp";
+import wallpaper5 from "../assets/HeroImages/homepagewallpaper2.webp";
+import wallpaper2 from "../assets/HeroImages/homepagewallpaper3.webp";
+import wallpaper3 from "../assets/HeroImages/homepagewallpaper4.webp";
+import wallpaper1 from "../assets/HeroImages/homepagewallpaper5.webp";
 import { navlinks } from "../navlinks";
 
 const imageList = [
