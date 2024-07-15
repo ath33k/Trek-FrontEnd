@@ -62,7 +62,7 @@ export const NavBar = () => {
       path: navlinks.search.path,
     },
     {
-      name: "Card",
+      name: "Cards",
       path: navlinks.card.path,
     },
   ];

@@ -1,23 +1,23 @@
+import { useEffect, useState } from "react";
+import { doc } from "firebase/firestore";
+import { useDocumentDataOnce } from "react-firebase-hooks/firestore";
+import { FaMapMarkerAlt } from "react-icons/fa";
+import { useParams } from "react-router-dom";
+
+import Chip from "../components/Chip";
+import CommentSection3 from "../components/CommentSection4";
 import Container from "../components/Container";
+import ErrorScreen from "../components/Errors/ErrorScreen";
 import ExpandableText from "../components/ExpandableText";
 import HeaderImageCarousel from "../components/HeaderImageCarousel";
-import Chip from "../components/Chip";
-import { FaMapMarkerAlt } from "react-icons/fa";
-import RatingComponent2 from "../components/RatingSection2";
-import CommentSection3 from "../components/CommentSection4";
-import { useDocumentDataOnce } from "react-firebase-hooks/firestore";
-import ScrollSlider from "../components/ScrollSlider";
 import LoadingScreen from "../components/Loading/LoadingScreen";
-import ErrorScreen from "../components/Errors/ErrorScreen";
-import { doc } from "firebase/firestore";
-import { db } from "../config/firebase";
-import { useEffect, useState } from "react";
-import { getimageURL } from "../firefunctions";
-import { useParams } from "react-router-dom";
 import MapViewCard from "../components/MapViewCard";
+import RatingComponent2 from "../components/RatingSection2";
+import ScrollSlider from "../components/ScrollSlider";
+import { db } from "../config/firebase";
+import { getimageURL } from "../firefunctions";
 
 //import RatingComponent from "../components/RatingSection2";
-
 export default function FDetialPage() {
   const params = useParams();
 
@@ -66,14 +66,14 @@ export default function FDetialPage() {
         <ExpandableText className=" text-base text-gray-800 text-justify font-inter">
           {value.description}
         </ExpandableText>
-        {/* <div className="gap-1 flex">
+        <div className="gap-1 flex">
           <Chip
             startIcon={<FaMapMarkerAlt />}
             label={"Map"}
             className=" text-gray-50 bg-emerald-600"
           />
           <Chip label={"14km"} className=" text-gray-50 bg-violet-600" />
-        </div> */}
+        </div>
         {/* <div className="mb-10">
           <ScrollSlider
             title="Community Gallery"
