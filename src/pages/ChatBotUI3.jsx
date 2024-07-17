@@ -656,7 +656,7 @@ const ChatBotUI = () => {
     }
     //http://127.0.0.1:5000/chatbot
     try {
-      const response = await fetch('https://ec2-13-60-36-28.eu-north-1.compute.amazonaws.com/chatbot', {
+      const response = await fetch('http://127.0.0.1:5000/chatbot', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -704,7 +704,7 @@ const ChatBotUI = () => {
             updatedChats[selectedChatIndex].messages.push({ sender: 'location', result: newResult });
             setMessages(updatedChats[selectedChatIndex].messages);
             setChats(updatedChats);
-            break; // Only show the first result
+            //break; // Only show the first result
           }
         }
       }
