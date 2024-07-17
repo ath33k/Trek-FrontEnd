@@ -654,9 +654,9 @@ const ChatBotUI = () => {
       }, 1000);
       return;
     }
-
+    //http://127.0.0.1:5000/chatbot
     try {
-      const response = await fetch('http://127.0.0.1:5000/chatbot', {
+      const response = await fetch('http://13.60.36.28:8080/chatbot', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
